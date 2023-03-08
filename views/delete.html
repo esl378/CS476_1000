@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Academic Schedule - Delete Year</title>
+        <link rel="stylesheet" type="text/css" href="../CSS/overall.css"/>
+        <link rel="stylesheet" type="text/css" href="../CSS/delete.css"/>
+        <script type = "text/javascript"  src = "../Scripts/date.js" ></script>
+    </head>
+    <header class="banner" role="banner">
+        <div class="bannerLeft">
+            <img src="../Images/UR_Logo_Primary_Reverse_White.png" alt="UofR logo" role="img"/>
+        </div>
+        <div class="bannerMiddle">
+            2022-2023 Academic Schedule</br>
+            <span class="subtitle">Delete an Existing Year</span>
+        </div>
+        <div class="bannerRight">
+            <p id="date"></p>
+        </div>
+    </header>
+    <body class="mainContainer"><!-- style="display:block!important;margin-top:20vh" -->
+        <div class="content center">
+            <h2>Delete a Calendar</h2>
+            <form class="forms" id="delete" action="/Pages/deleteConfirm.html">
+                <label for="year">Academic Year:</label>
+                <select name="year">
+                    <option value="2019-2020" selected="selected
+                    ">2019-2020</option>
+                    <option value="2020-2021">2020-2021</option>
+                    <option value="2021-2022">2021-2022</option>
+                    <option value="2022-2023">2022-2023</option>
+                </select>
+                <br>
+                <br>
+                <div class="center">
+                    <input type="submit" value="Delete" class="">
+                </div>
+            </form>
+        </div>
+        <footer class="bottom">
+            <div class="bottomRight">
+                <a class="right" href="./semesterView.html">Logout</a>
+            </div>
+        </footer>
+    </body>
+    
+    
+    <script type = "text/javascript"  src = "../Scripts/registrations.js" ></script>
+</html>
