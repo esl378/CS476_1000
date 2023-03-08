@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Academic Schedule</title>
+        <!--<script type="text/javascript" src="../Scripts/primary.js"> </script>  -->
+        <title>Academic Schedule - Semester View</title>
+        <link rel="stylesheet" type="text/css" href="../CSS/overall.css"/>
+        <link rel="stylesheet" type="text/css" href="../CSS/semesterCSS.css"/>
+        <script type = "text/javascript"  src = "../Scripts/date.js" ></script>
+    </head>
+    <header class="banner" role="banner">
+        <div class="bannerLeft">
+            <img src="../Images/UR_Logo_Primary_Reverse_White.png" alt="UofR logo" role="img"/>
+        </div>
+        <div class="bannerMiddle">
+            2022-2023 Academic Schedule<br/>
+            <span class="subtitle">Full Semester View</span>
+        </div>
+        <div class="bannerRight">
+            <p id="date">
+            </p>
+        </div>
+    </header>
+</br>
+    <body class="mainContainer">
+        <div class="middle" role="contentinfo">
+            <div class="midLeft">
+                <label for="year">Academic Year</label>
+                <select name="year" id="year" value="2022-2023">
+                    <option value="2020-2021">2020-2021</option>
+                    <option value="2021-2022">2021-2022</option>
+                    <option value="2022-2023" selected="selected">2022-2023</option>
+                    <option value="2023-2024">2023-2024</option>
+                </select>
+            </div>
+            <div class="midCenter">
+                <label for="semester">Semester</label>
+                <select name="semester" id="semester" value="Winter">
+                    <option value="Spring/Summer">Spring/Summer</option>
+                    <option value="Fall">Fall</option>
+                    <option value="Winter" selected="selected">Winter</option>
+                </select>
+            </div>
+            <form action="./monthView.html" class="midRight">
+                <input type="submit" value="Month View" class="">
+            </form>
+            <div class="info" role="main">
+                <h1 role="heading">Winter 2023</h1>
+                <details class="infoAccordian" role="directory">
+                    <summary role="doc-subtitle">Term Information</summary>
+                    <div class="step1">
+                        <span class="bold">Held in:</span> January - April<br/>
+                        <span class="bold">Start of Term:</span> 4-January-2023<br/>
+                        <span class="bold">End of Term:</span> 27-April-2023
+                        <p style="margin: 5px"> </p>
+                        <details class="step2">
+                            <summary>Class Dates</summary>
+                            <div class="step1">
+                                <span class="bold">Start of Classes:</span> 4-January-2023<br/>
+                                <span class="bold">End of Classes:</span> 11-April-2023
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Examination Dates</summary>
+                            <div class="step1">
+                                <span class="bold">First Day of Exams:</span> 14-April-2023<br/>
+                                <span class="bold">Last Day of Exams:</span> 27-April-2023
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Tuition and Fee Payment Dates</summary>
+                            <div class="step1">
+                                <span class="bold">Due date:</span> 4-January-2023<br/>
+                                <span class="bold">End of Penalty-Free Payment Period:</span> 31-January-2023
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Class Add/Drop Dates</summary>
+                            <div class="step1">
+                                <span class="bold">End of Course-Add Period:</span> 17-January-2023<br/>
+                                <span class="bold">End of No-Record Drop Period:</span> 17-January-2023<br/>
+                                <span class="bold">End of Grade-of-W Drop Period:</span> 15-March-2023
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Tuition and Fee Refund Dates</summary>
+                            <div class="step1">
+                                <span class="bold">End of 100% Refund Period:</span> 17-January-2023<br/>
+                                <span class="bold">End of 50% Refund Period:</span> 31-January-2023
+                            </div>
+                        </details>
+                    </div>
+                </details>
+                <details class="infoAccordian">
+                    <summary>Other Important Dates and Deadlines</summary>
+                    <div class="step1">
+                        <p style="margin: 5px"> </p>
+                        <details class="step2">
+                            <summary>Reading Week</summary>
+                            <div class="step1">
+                                <span class="bold">Start (Monday):</span> 20-February-2023<br/>
+                                <span class="bold">End (Saturday):</span> 25-February-2023
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Stat Holidays - No Classes <span class="seventyfive">(Most University Offices Closed)</span>;</summary>
+                            <div class="step1">
+                                <span class="bold">Good Friday:</span> 7-April-2023<br/>
+                                <span class="bold">Family Day:</span> 20-February-2023<br/>
+                                <!-- <span class="bold">Thanksgiving Day:</span> 10-October-2022<br/>
+                                <span class="bold">Remembrance Day:</span> 11-November-2022 -->
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Other</summary>
+                            <div class="step1">
+                                <span class="bold">Student Orientation:</span> 3-January-2023<br/>
+                                <span class="bold">Last day to apply to graduate for Spring 2023 Convocation:</span> 31-January-2023<br/>
+                                <!-- <span class="bold">University Closed From <span class="seventyfive">(noon)</span>:</span> 22-December-2022<br/>
+                                <span class="bold">University Closed To <span class="seventyfive">(8:15 a.m.)</span>:</span> 3-January-2023 -->
+                            </div>
+                        </details>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <footer class="bottom">
+            <a href="./login.html" class="bottomRight">Admin Login</a>
+        </footer>
+    </body>
+    <script type = "text/javascript"  src = "../Scripts/registrations.js" ></script>
+</html>
