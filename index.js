@@ -1,3 +1,4 @@
+const http = require('http');
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -21,34 +22,33 @@ app.get('fileName(.html)?', (req, res) => {
 */
 
 //Serve a page, lacking images and other files
-
 //semesterView page and will be treated as index page
 app.get('^/$|index(.html)?|semesterView(.html)', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'semesterView.html'));
 });
 
 //monthView page
-app.get('monthView(.html)?', (req, res) => {
+app.get('/monthView(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'monthView.html'));
 });
 
 //delete page
-app.get('delete(.html)?', (req, res) => {
+app.get('/delete(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'delete.html'));
 });
 
 //deleteConfirm page
-app.get('deleteConfirm(.html)?', (req, res) => {
+app.get('/deleteConfirm(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'deleteConfirm.html'));
 });
 
 //add page
-app.get('add(.html)?', (req, res) => {
+app.get('/add(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'add.html'));
 });
 
 //edit page
-app.get('edit(.html)?', (req, res) => {
+app.get('/edit(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'edit.html'));
 });
 
