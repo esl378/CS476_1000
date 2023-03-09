@@ -1,0 +1,80 @@
+/*  Middle Grid*//* 
+.mainContainer{
+    margin-top: 50px;
+} */
+button, input[type="submit"]{
+    width: 175px;
+    font-size: 19px;
+}
+.middle{
+    grid-template-columns: auto auto auto;
+}
+.midLeft, .midCenter, .midRight{
+    grid-row: 1/2;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    margin: auto auto auto auto;
+}
+.midLeft{
+    grid-column: 1/2;
+}
+.midCenter{
+    grid-column: 2/3;
+}
+.midRight{
+    grid-column: 3/4;
+}
+.info{
+    grid-row: 2/3;
+    grid-column: 1/4;
+}
+/*  End of Middle Grid*/
+
+/*  Info Accordian */
+details{
+    margin-bottom: 20px;
+}
+details[open]{
+    margin-bottom: 10px;
+}
+summary{
+    background-color: rgba(0,79,4);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255,200,46);
+    color: #fff;
+    padding: 0.3%;
+    padding-left: 1%;
+}
+summary:hover{
+    background-color: rgba(255,200,46);
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgba(0,79,4);
+    color: black;
+    font-weight: bold;
+}
+.step1{
+    margin-left: 5%;
+    margin-bottom: 1%;
+    font-size: 90%;
+}
+.step2{
+    margin-bottom: 7.5px;
+}
+h1{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.infoAccordian{
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+.bold{
+    font-weight: bold;
+}
+.seventyfive{
+    font-size: 75%;
+}
