@@ -9,6 +9,16 @@ const PORT = process.env.PORT || 4111;
 const dotenv = require("dotenv");
 dotenv.config();
 
+
+//Middleware for urlencoded data
+app.use(express.urlencoded({extended: false}));
+
+//middleware for json
+app.use(express.json());
+
+//serve static files
+app.use(express.static(path.join(__dirname, '/public')));
+
 /*
 
 Template for adding new pages that are servable from the webserver
