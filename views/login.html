@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Academic Schedule - Admin Login</title>
+        <link rel="stylesheet" type="text/css" href="../CSS/overall.css"/>
+        <link rel="stylesheet" href="../CSS/login.css">
+        <script type = "text/javascript"  src = "../Scripts/date.js"></script>
+        <!--<script type="text/javascript" src="../Scripts/primary.js"></script> -->
+    </head>
+    <header class="banner" role="banner">
+        <div class="bannerLeft">
+            <img src="../Images/UR_Logo_Primary_Reverse_White.png" alt="UofR logo" role="img"/>
+        </div>
+        <div class="bannerMiddle">
+            2022-2023 Academic Schedule</br>
+            <span class="subtitle">Administration Login</span>
+        </div>
+        <div class="bannerRight">
+            <p id="date">
+            </p>
+        </div>
+    </header> 
+</br>
+    <body class="mainContainer"><!-- style="display:block!important;margin-top:20vh" -->
+        <div class="wrapper">
+            <div class="inner-wrapper text-center">
+                <h2 class="title">Administration Login</h2>
+                <form action="./maintenance.html" id="formvalidate">
+                    <div class="input-group">
+                        <label class="placeholder" for="userName">User ID</label>
+                        <input class="form-control"
+                               name="userName"
+                               id="userName"
+                               type="text"
+                               placeholder=""/>
+                        <span class="lighting"></span>
+                    </div>
+                    <div class="input-group">
+                        <label class="placeholder" for="userPassword">Password</label>
+                        <input class="form-control"
+                               name="userPassword"
+                               id="userPassword"
+                               type="password"
+                               placeholder=""/>
+                        <span class="lighting"></span>
+                    </div>
+                    <button type="submit" id="login">Login</button>
+                    <div class="clearfix supporter">
+                        <div class="pull-left remember-me">
+                            <input id="rememberMe" type="checkbox">
+                            <label for="rememberMe">Remember Me</label>
+                        </div>
+                        <a class="forgot pull-right" href="#">Forgot Password?</a>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-wrapper text-center">
+                <a href="#">Visit our university website. <span class="text-primary">Here</span></a>
+            </div>
+        </div>
+    </body>
+    <script type = "text/javascript"  src = "../Scripts/registrations.js"></script>
+</html>
