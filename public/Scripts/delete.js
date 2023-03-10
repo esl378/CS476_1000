@@ -4,7 +4,7 @@ const { MongoClient } = require('mongodb');
 async function main(){
 
     //uri used as credentials to login to the database
-    const uri = "mongodb+srv://jfk188:vJ3BSasC9CTTjmx0@cs476.wk3qpgw.mongodb.net/?retryWrites=true&w=majority";
+    const uri = URI_SEC;
 
     //client used to connect to the database
     const client = new MongoClient(uri);
