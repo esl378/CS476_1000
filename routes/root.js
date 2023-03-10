@@ -8,8 +8,8 @@ Template for adding new pages that are servable from the webserver
 
 Replace the fileName with the name of your webpage without touching anything else
 
-router.get('fileName(.html)?', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'fileName.html'));
+router.get('/fileName(.html)?', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'fileName.html'));
 });
 
 */
@@ -41,8 +41,8 @@ router.get('/add(.html)?', (req, res) => {
 });
 
 //maintenance page
-router.get('maintenance(.html)?', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'maintenance.html'));
+router.get('/maintenance(.html)?', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'maintenance.html'));
 });
 
 //edit page
@@ -51,8 +51,8 @@ router.get('/edit(.html)?', (req, res) => {
 });
 
 //login page
-router.get('login(.html)?', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+router.get('/login(.html)?', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'login.html'));
 });
 
 module.exports = router;
