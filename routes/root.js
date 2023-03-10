@@ -40,9 +40,19 @@ router.get('/add(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'add.html'));
 });
 
+//maintenance page
+router.get('maintenance(.html)?', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'maintenance.html'));
+});
+
 //edit page
 router.get('/edit(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'edit.html'));
+});
+
+//login page
+router.get('login(.html)?', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 
 module.exports = router;
