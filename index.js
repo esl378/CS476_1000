@@ -19,15 +19,18 @@ app.use(express.json());
 //serve static files
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.use('/', require('./routes/root'));
 
+//Routes
+//app.use('/', require('./routes/login'));
+app.use('/', require('./routes/root'));
+app.use('/auth', require('./routes/auth'));
+app.use('/register', require('./routes/register'));
 
 
 //I commented out this code just in case it messes with the page retrievals
 //The web server should now serve our html pages
 //app.set('view engine', 'ejs');
 
-//Routes
-//app.use('/', require('./routes/login'));
+
 
 app.listen(PORT,console.log("Server has started at port " + PORT)); 
