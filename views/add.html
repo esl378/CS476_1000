@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Academic Schedule - Edit Confirmation</title>
-        <link rel="stylesheet" type="text/css" href="/CSS/overall.css"/>
-    <script type = "text/javascript"  src = "/Scripts/date.js" ></script>
-    </head>
+<head>
+    <title>Academic Schedule - Add Year</title>
+    <link rel="stylesheet" type="text/css" href="/CSS/monthView.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/overall.css" />
+    <script type="text/javascript" src="/Scripts/date.js"></script>
+</head>
     <header class="banner" role="banner">
         <div class="bannerLeft">
-            <img src="/Images/UR_Logo_Primary_Reverse_White.png" alt="UofR logo" role="img"/>
+            <img src="/Images/UR_Logo_Primary_Reverse_White.png" alt="UofR logo" role="img" />
         </div>
         <div class="bannerMiddle">
             2022-2023 Academic Schedule</br>
-            <span class="subtitle">Add a New Year</span>
+            <span class="subtitle">Add an Existing Year</span>
         </div>
         <div class="bannerRight">
             <p id="date">
             </p>
         </div>
     </header>
-    <body class="mainContainer">
+    </br>
+    <body class="mainContainer" id="mainContainer">
+        <div class="form">
+            <form id="form">
+                <p>Year: <input type="number" id="year" /></p>
+                <h2>Semesters</h2>
+                <div class="semesters" id="semesters"></div>
+                <input type="button" id="addSemester" value="Add new Semester" />
+                <input type="button" id="hideSemesters" value="Hide the Semesters" />
+                <h2>Dates</h2>
+                <div class="dates" id="dates"></div>
+                <input type="button" id="addDate" value="Add new date" />
+                <input type="button" id="hideDate" value="Hide the Dates" />
+                <input type="submit" />
+            </form>
+        </div>
 
-        <h1>Hello</h1>
-        
-        <footer class="bottom">
-            <div class="bottomRight">
-                <a class="right" href="./semesterView.html">Logout</a>
-            </div>
-        </footer>
+
+    <div class="buttons">
+        <div class="buttonLeft">
+            <button>Upload via file (JSON)</button>
+        </div>
+        <div class="buttonRight">
+            <button>Save</button>
+        </div>
+    </div>
+    </div>
+    <footer class="bottom">
+        <div class="bottomRight">
+            <a class="right" href="./semesterView.html">Logout</a>
+        </div>
+    </footer>
     </body>
-    <script type = "text/javascript"  src = "/Scripts/registrations.js" ></script>
-    
+
 </html>
+<!--<script type="text/javascript" src="../Scripts/registrations.js"></script>-->
+<script type="text/javascript" src="/Scripts/add.js"></script>
+<script type="text/javascript" src="/Scripts/addEventListener.js"></script>
