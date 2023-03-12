@@ -22,8 +22,8 @@
     </br>
     <body class="mainContainer" id="mainContainer">
         <div class="form">
-            <form id="form">
-                <p>Year: <input type="number" id="year" /></p>
+            <form id="form" action="" method="get">
+                <p>Year: <input type="number" id="year" name="year" /></p>
                 <h2>Semesters</h2>
                 <div class="semesters" id="semesters"></div>
                 <input type="button" id="addSemester" value="Add new Semester" />
@@ -32,11 +32,12 @@
                 <div class="dates" id="dates"></div>
                 <input type="button" id="addDate" value="Add new date" />
                 <input type="button" id="hideDate" value="Hide the Dates" />
+                </br>
+                </br>
+                </br>
                 <input type="submit" />
             </form>
         </div>
-
-
     <div class="buttons">
         <div class="buttonLeft">
             <button>Upload via file (JSON)</button>

@@ -66,6 +66,7 @@ function createSemesterObject() {
     var input = document.createElement("input");
     input.type = "text";
     input.className = "sem";
+    input.name = "sem" + num;
     input.id = "sem";
     //Add input to p
     name.appendChild(input);
@@ -81,6 +82,7 @@ function createSemesterObject() {
     var input = document.createElement("input");
     input.type = "date";
     input.className = "start";
+    input.name = "start" + num;
     input.id = "start";
     //Add input to p
     name.appendChild(input);
@@ -95,6 +97,7 @@ function createSemesterObject() {
     var input = document.createElement("input");
     input.type = "date";
     input.className = "end";
+    input.name = "end" + num;
     input.id = "end";
     //Add input to p
     name.appendChild(input);
@@ -132,6 +135,7 @@ function createDateObject() {
     var input = document.createElement("input");
     input.type = "text";
     input.className = "desc";
+    input.name = "desc" + num;
     input.id = "desc";
     //Add input to p
     name.appendChild(input);
@@ -146,6 +150,7 @@ function createDateObject() {
     var input = document.createElement("input");
     input.type = "date";
     input.className = "start";
+    input.name = "start" + num;
     input.id = "start";
     //Add input to p
     name.appendChild(input);
@@ -160,6 +165,7 @@ function createDateObject() {
     var input = document.createElement("input");
     input.type = "date";
     input.className = "end";
+    input.name = "end" + num;
     input.id = "end";
     //Add input to p
     name.appendChild(input);
@@ -174,6 +180,7 @@ function createDateObject() {
     var input = document.createElement("input");
     input.type = "checkbox";
     input.className = "otherDate";
+    input.name = "otherDate" + num;
     input.id = "otherDate";
     //Add input to p
     name.appendChild(input);
