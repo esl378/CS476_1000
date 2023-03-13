@@ -16,5 +16,7 @@ async function main(val) {
             }
             throw new Error
         }
-    } 
+    } catch(err){
+        
+    }
 }
