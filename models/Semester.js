@@ -3,21 +3,20 @@ const Schema = mongoose.Schema;
 
 const semesterSchema = new Schema({
     name: {
-        type: String,
-        required: true
+        type: String
+    },
+    heldIn:{
+        type:String
     },
     strtDate: {
-        type: Date,
-        required: true
+        type: Date
     },
     endDate: { 
-        type: Date,
-        required: true
+        type: Date
     },
     year: {
-        type: String,
-        required: true
+        type: String
     }
-});
+}, {typeKey: '$type'});
 
-module.exports = semesterSchema;
+module.exports = mongoose.model('Semester', semesterSchema);

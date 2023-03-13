@@ -3,21 +3,20 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
     strtDate: {
-        type: Date,
-        required: true
+        type: Date
     },
     endDate: { 
-        type: Date,
-        required: true
+        type: Date
+    },
+    semester: {
+        type: String
     },
     year: {
-        type: String,
-        required: true
+        type: String
     },
     description: {
-        type: String,
-        required: true
+        type: String
     }
-});
+}, {typeKey: '$type'});
 
-module.exports = eventSchema;
+module.exports = mongoose.model('Event', eventSchema);

@@ -3,9 +3,8 @@ const Schema = mongoose.Schema;
 
 const yearSchema = new Schema({
     year: {
-        type: String,
-        required: true
+        type: String
     }
-});
+}, {typeKey: '$type'});
 
 module.exports = mongoose.model('Year', yearSchema);
