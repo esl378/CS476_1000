@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const semesterSchema = new Schema({
     name: {
-        type: String
+        type: String //"sem_yyyy"
     },
     heldIn:{
         type:String
@@ -15,7 +15,7 @@ const semesterSchema = new Schema({
         type: Date
     },
     year: {
-        type: String
+        type: String //"yyyy-yyyy"
     }
 }, {typeKey: '$type'});
 

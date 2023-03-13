@@ -10,7 +10,6 @@ const handleLogin = async (req, res) => {
     //evaluate password
     const match = await bcrypt.compare(pwd, foundUser.pass);
     
-    
     if(match){
         //create JWT -> JSON Web Tokens
         const accessToken = jwt.sign(
