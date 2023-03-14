@@ -11,7 +11,7 @@ const corsOptions = require('./config/corsOptions');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
 const app = express();
-app.set('json spaces', 40);
+
 const PORT = process.env.PORT || 4111;
 
 //connect to MongoDB
@@ -53,7 +53,8 @@ app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
 app.use('/monthRoute', require('./routes/monthRoute'));
 app.use('/semesterRoute', require('./routes/semesterRoute'));
-app.use('/add', require('./routes/add'))
+app.use('/add', require('./routes/add'));
+app.use('/getDates', require('./routes/getDate'));
 
 
 

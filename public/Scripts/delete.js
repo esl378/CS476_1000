@@ -1,5 +1,3 @@
-
-
 const form = document.getElementById("del")
 form.addEventListener("submit", function(Event) {
     Event.preventDefault();
@@ -20,17 +18,18 @@ async function main(form) {
             credentials: 'include',
             body: JSON.stringify(send)
         });
-        const response = await res.json()
-        var num = response.deleted;
+
         if(!res.ok){
             if(res.status === 401){
                 return await sendRefreshToken();
             }
             throw new Error(`${res.status} ${res.statusText}`);
         }
+
         if(num > 0){
             window.location = 'deleteConfirm.html?number=' + num;
         }
+
 
 
     } catch(err){
@@ -45,30 +44,13 @@ async function populate() {
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
         });
-        const response = await res.json()
-        var years = [];
-        for(let i = 0; i < response.length; i++){
-            years[i] = response[i].year;
-            console.log(years[i]);
-        }
         if(!res.ok){
             if(res.status === 401){
                 return await sendRefreshToken();
             }
             throw new Error(`${res.status} ${res.statusText}`);
         }
-        
-        var select = document.getElementById("yearVals");
-        
-        for(let i = 0; i < years.length; i++){
-            var option = document.createElement("option");
-            option.value = years[i];
-            option.name = "year";
-            option.innerHTML = years[i];
-            select.appendChild(option);
-        }
-
-
+        console.log(res);
     }catch(err){
         console.log(err.stack);
     }
