@@ -1,4 +1,8 @@
-
+const form = document.getElementById("form");
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    daddyFunky(form);
+})
 
 class Semester {
     constructor(name,heldIn,strtDate,endDate,year) {
@@ -335,6 +339,11 @@ function createDTO() {
         }
     }
 
-    dto.print();
+    console.log(JSON.stringify(dto));
+
+}
+
+async function daddyFunky(form) {
+    const formData = new FormData;
 
 }
