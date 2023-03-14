@@ -8,12 +8,12 @@ const handleAddYear = async (req, res) => {
 
     const semestersList = requestReceiver.semesters;
     const yearsList = requestReceiver.year;
-    const eventsList = requestReceiver.event;
+    const eventsList = requestReceiver.events;
 
     try{
         const result1 = await Event.insertMany(eventsList);
         const result2 = await Semester.insertMany(semestersList);
-        const result3 = await Event.insertMany(yearsList);
+        const result3 = await Year.insertMany(yearsList);
 
         res.status(201).json({'success': `Added events ${result1}\n Added semesters ${result2}\n Added years ${result3}`});
 
