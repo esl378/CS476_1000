@@ -248,3 +248,24 @@ function createDateObject() {
     //Append the div to the form
     dates.appendChild(div);
 }
+
+async function mommyFunky() {
+    try{
+        const result = await fetch('http://localhost:4111/getDates', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
+
+        console.log(result);
+
+        if(!result.ok) {
+            throw new Error(`${result.status} ${result.statusText}`);
+        }
+
+    } catch(err) {
+        console.log("Mom saw the mailman");
+    }
+}
