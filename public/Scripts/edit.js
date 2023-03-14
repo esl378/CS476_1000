@@ -251,7 +251,7 @@ function createDateObject() {
 
 async function mommyFunky() {
     try{
-        const result = await fetch('http://localhost:4111/getDates', {
+        const result = await fetch('http://localhost:4111/getSemesters', {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
