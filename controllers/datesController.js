@@ -4,6 +4,7 @@ const Year = require('../models/Year');
 
 const handleAddYear = async (req, res) => {
     const requestReceiver = req.body;
+    
     const semestersList = requestReceiver.semesters;
 
     //const yearsList = requestReceiver.year;
@@ -16,7 +17,7 @@ const handleAddYear = async (req, res) => {
 
     try{
 
-        //console.log(semestersList);
+        console.log(semestersList);
         //console.log(yearsList);
         //console.log(eventsList);
         //const result1 = await Year.insertMany(yearsList);
