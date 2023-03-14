@@ -1,3 +1,5 @@
+
+//Created a class to get the semesters into a nice easy to use object
 class Semester {
     constructor(name,heldIn,strtDate,endDate,year) {
         this.name = name;
@@ -14,6 +16,7 @@ class Semester {
     }
 };
 
+//Created a class to get the Events into a nice easy to use object
 class Event {
     constructor(strtDate, endDate, semester="invalid", year, description) {
         this.strtDate = strtDate;
@@ -31,6 +34,7 @@ class Event {
     }
 };
 
+//Created a class to get the Year into a nice easy to use object
 class Year {
     constructor(year) {
         this.year = year;
@@ -40,7 +44,7 @@ class Year {
     }
 };
 
-
+//Added a new class to make a nice easy to use class to send stuff from front to back
 class DTO {
     constructor(semesters,events,year) {
         this.semesters = semesters;
@@ -317,8 +321,6 @@ function createDTO() {
             }
         }
     }
-    console.log(JSON.stringify(dto));
-
     return JSON.stringify(dto);
 
 }
