@@ -317,6 +317,7 @@ function createDTO() {
             }
         }
     }
+    console.log(JSON.stringify(dto));
 
     return JSON.stringify(dto);
 

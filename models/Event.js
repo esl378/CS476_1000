@@ -1,7 +1,17 @@
+//Breaking stuff for fun
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const eventSchema = new Schema({
+const eventSchema = new Schema( {
+    strtDate: String,
+    endDate: String,
+    semester: String,
+    year: String,
+    description: String
+}, {typeKey: '$type'});
+
+/* const eventSchema = new Schema({
     strtDate: {
         type: Date
     },
@@ -17,6 +27,6 @@ const eventSchema = new Schema({
     description: {
         type: String
     }
-}, {typeKey: '$type'});
+}, {typeKey: '$type'}); */
 
 module.exports = mongoose.model('Event', eventSchema);
