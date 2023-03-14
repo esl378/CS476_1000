@@ -136,7 +136,7 @@ function createSemesterObject() {
     var input = document.createElement("input");
     input.type = "text";
     input.className = "sem";
-    input.name = "sem" + num;
+    input.name = "name";
     input.id = "sem";
     //Add input to p
     name.appendChild(input);
@@ -152,7 +152,7 @@ function createSemesterObject() {
     var input = document.createElement("input");
     input.type = "date";
     input.className = "start";
-    input.name = "start" + num;
+    input.name = "strt_date";
     input.id = "start";
     //Add input to p
     name.appendChild(input);
@@ -167,7 +167,7 @@ function createSemesterObject() {
     var input = document.createElement("input");
     input.type = "date";
     input.className = "end";
-    input.name = "end" + num;
+    input.name = "end_date";
     input.id = "end";
     //Add input to p
     name.appendChild(input);
@@ -205,7 +205,7 @@ function createDateObject() {
     var input = document.createElement("input");
     input.type = "text";
     input.className = "desc";
-    input.name = "desc" + num;
+    input.name = "description";
     input.id = "desc";
     //Add input to p
     name.appendChild(input);
@@ -220,7 +220,7 @@ function createDateObject() {
     var input = document.createElement("input");
     input.type = "date";
     input.className = "start";
-    input.name = "start" + num;
+    input.name = "strtDate";
     input.id = "start";
     //Add input to p
     name.appendChild(input);
@@ -230,28 +230,13 @@ function createDateObject() {
     //End date
     //Title
     var name = document.createElement("p");
-    name.innerHTML = "Start date";
+    name.innerHTML = "End date";
     //Input
     var input = document.createElement("input");
     input.type = "date";
     input.className = "end";
-    input.name = "end" + num;
+    input.name = "endDate";
     input.id = "end";
-    //Add input to p
-    name.appendChild(input);
-    //Add name to div
-    div.appendChild(name);
-
-    //Other date
-    //Title
-    var name = document.createElement("p");
-    name.innerHTML = "Other date";
-    //Input
-    var input = document.createElement("input");
-    input.type = "checkbox";
-    input.className = "otherDate";
-    input.name = "otherDate" + num;
-    input.id = "otherDate";
     //Add input to p
     name.appendChild(input);
     //Add name to div
@@ -340,7 +325,7 @@ function createDTO() {
 async function daddyFunky() {
     const dto = createDTO();
     try{
-        const result = await fetch('https://localhost:4111/add', {
+        const result = await fetch('http://localhost:4111/add', {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
