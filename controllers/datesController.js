@@ -4,21 +4,26 @@ const Year = require('../models/Year');
 
 const handleAddYear = async (req, res) => {
     const requestReceiver = req.body;
+    
     const semestersList = requestReceiver.semesters;
-    const yearsList = requestReceiver.year;
-    const eventsList = requestReceiver.events;
+
+    //const yearsList = requestReceiver.year;
+    //const eventsList = requestReceiver.events;
+
+    console.log(semestersList);
 
     //|| !semesters || !events
     //if(!addYear) return res.status(400).json({'message': 'invalid year or semester or event'});
 
     try{
 
-        //console.log(semestersList);
+        console.log(semestersList);
         //console.log(yearsList);
         //console.log(eventsList);
-        const result1 = await Year.insertMany(yearsList);
+        //const result1 = await Year.insertMany(yearsList);
         const result2 = await Semester.insertMany(semestersList);
-        const result3 = await Event.insertMany(eventsList);
+        //const result3 = await Event.insertMany(eventsList);
+        console.log(result2);
         
         res.status(201).json({'success': `Succeed `});
 
