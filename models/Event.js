@@ -9,7 +9,7 @@ const eventSchema = new Schema( {
     semester: String,
     year: String,
     description: String
-}, {typeKey: '$type'});
+}, {typeKey: '$type', versionKey: false});
 
 /* const eventSchema = new Schema({
     strtDate: {
