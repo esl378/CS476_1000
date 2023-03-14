@@ -35,50 +35,31 @@ const handleGetEvents = async (req, res) => {
     }
 }
 
-/* const handleGetYears = async (req, res) => {
-    const { user, pwd } = req.body;
-    if(!user || !pwd) return res.status(400).json({'message': 'Username and password are required'});
-
-    //check for duplicate usernames in DB
-    const duplicate = await User.findOne({uid: user}).exec();
-    if(duplicate) return res.sendStatus(409); //conflict
+const handleGetYears = async (req, res) => {
+    const { year } = req.body;
+    
+    const event = await Year.find().exec();
+    
     try{
-        //encrypt the password
-        const hashedPwd = await bcrypt.hash(pwd, 10);
-        //Create and store the new user
-       const result = await User.create({
-            "uid": user,
-            "pass": hashedPwd
-       });
-
-       console.log(result);
-        res.status(201).json({'success': `New user ${user} created!`});
+        console.log(event);
+        res.json(event);
     } catch(err){
         res.status(500).json({'message': err.message});
     }
 }
 
 const handleGetSemesters = async (req, res) => {
-    const { user, pwd } = req.body;
-    if(!user || !pwd) return res.status(400).json({'message': 'Username and password are required'});
-
-    //check for duplicate usernames in DB
-    const duplicate = await User.findOne({uid: user}).exec();
-    if(duplicate) return res.sendStatus(409); //conflict
+    const { name, strtDate, endDate, year, heldIn } = req.body;
+    
+    const event = await Semester.find().exec();
+    
     try{
-        //encrypt the password
-        const hashedPwd = await bcrypt.hash(pwd, 10);
-        //Create and store the new user
-       const result = await User.create({
-            "uid": user,
-            "pass": hashedPwd
-       });
-
-       console.log(result);
-        res.status(201).json({'success': `New user ${user} created!`});
+        console.log(event);
+        res.json(event);
     } catch(err){
         res.status(500).json({'message': err.message});
     }
-} */
+}
 
-module.exports = {handleAddYear, handleGetEvents};
+
+module.exports = {handleAddYear, handleGetEvents, handleGetYears, handleGetSemesters};
