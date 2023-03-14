@@ -3,17 +3,14 @@ async function main(val) {
 
     try{
         const res = await fetch('http://localhost:4111/semesterRoute', {
-            method: 'GET',
+            method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
             body: JSON.stringify({year})
         });
 
         if(!response.ok){
-            if(response.status === 401){
-                return await sendRefreshToken();
-            }
-            throw new Error
+            throw new Error(`${response.status} ${response.statusText}`);
         }
     } catch(err){
         

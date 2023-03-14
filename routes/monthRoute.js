@@ -2,6 +2,6 @@ const express = require('express');
 const router = express.Router();
 const monthController = require('../controllers/monthController');
 
-router.get('/', monthController.handleGetMonth);
+router.post('/', monthController.handleGetMonth);
 
 module.exports = router;
