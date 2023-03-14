@@ -29,7 +29,7 @@ const handleGetEvents = async (req, res) => {
     
     try{
         console.log(event);
-        res.send(event);
+        res.json(event);
     } catch(err){
         res.status(500).json({'message': err.message});
     }
