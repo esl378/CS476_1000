@@ -11,7 +11,7 @@ const corsOptions = require('./config/corsOptions');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
 const app = express();
-
+app.set('json spaces', 40);
 const PORT = process.env.PORT || 4111;
 
 //connect to MongoDB
