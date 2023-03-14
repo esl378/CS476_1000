@@ -1,9 +1,9 @@
 class Semester {
     constructor(name,heldIn,strtDate,endDate,year) {
         this.name = name;
-        this.year = year;
         this.strtDate = strtDate;
         this.endDate = endDate;
+        this.year = year;
         this.heldIn = heldIn;
     }
     print() {
