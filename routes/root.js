@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const authController = require('../controllers/loginController');
+const logoutController = require('../controllers/logoutControler');
 
 /*
 
@@ -13,6 +15,8 @@ router.get('/fileName(.html)?', (req, res) => {
 });
 
 */
+
+
 
 //Serve a page, lacking images and other files
 //semesterView page and will be treated as index page
@@ -50,9 +54,16 @@ router.get('/edit(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'edit.html'));
 });
 
-//login page
+//login page get html
 router.get('/login(.html)?', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'login.html'));
+    res.render(path.join(__dirname, '..', 'views', 'login.html'),{});
 });
+
+//login page post login
+router.post('/login(.html)?', authController.handleLogin);
+
+//logout
+router.get('/logout', logoutController.handleLogout);
+
 
 module.exports = router;
