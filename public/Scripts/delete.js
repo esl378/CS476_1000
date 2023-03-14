@@ -29,7 +29,7 @@ async function main(form) {
             throw new Error(`${res.status} ${res.statusText}`);
         }
         if(num > 0){
-            window.location = '/views/deleteConfirm.html?number=' + num;
+            window.location = 'deleteConfirm.html?number=' + num;
         }
 
 
