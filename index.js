@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const verifyjwt = require('./middleware/verifyJWT');
+const authCheck = require('./middleware/authCheck');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
 const corsOptions = require('./config/corsOptions');
@@ -16,6 +17,9 @@ const PORT = process.env.PORT || 4111;
 //connect to MongoDB
 connectDB();
 
+//html render engine
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 //Handle options credentials check
 //also fetch cookies credentials requirement
@@ -37,16 +41,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
 
 
-//Routes
+//ADD MIDDLEWARE FOR ROUTS HERE
+app.use('/maintenance',authCheck);
+
+
 //app.use('/', require('./routes/login'));
 app.use('/', require('./routes/root'));
 app.use('/auth', require('./routes/auth'));
 app.use('/register', require('./routes/register'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
-//app.use('/monthRoute', require('./routes/monthRoute'));
-//app.use('/semesterRoute', require('./routes/semesterRoute'));
+app.use('/monthRoute', require('./routes/monthRoute'));
+app.use('/semesterRoute', require('./routes/semesterRoute'));
 app.use('/add', require('./routes/add'))
+
 
 
 
