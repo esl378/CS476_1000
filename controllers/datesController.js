@@ -22,7 +22,6 @@ const handleAddYear = async (req, res) => {
     }
 }
 
-<<<<<<< HEAD
 const handleGetEvents = async (req, res) => {
     const { description, strtDate, endDate, year, semester } = req.body;
     
@@ -83,6 +82,3 @@ const handleGetSemesters = async (req, res) => {
 } */
 
 module.exports = {handleAddYear, handleGetEvents};
-=======
-module.exports = {handleAddYear};
->>>>>>> parent of 54e7427 (Broke my p[age)
