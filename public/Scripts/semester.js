@@ -2,7 +2,7 @@ async function main(val) {
     const year = val;
 
     try{
-        const response = await fetch('http://localhost:4111/sroute', {
+        const res = await fetch('http://localhost:4111/semesterRoute', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
@@ -12,9 +12,7 @@ async function main(val) {
         if(!response.ok){
             throw new Error(`${response.status} ${response.statusText}`);
         }
-        console.log(response);
     } catch(err){
-        console.log(err.stack);
+        
     }
 }
-window.onload = populate;
