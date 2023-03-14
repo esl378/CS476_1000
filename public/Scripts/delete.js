@@ -18,7 +18,8 @@ async function main(form) {
             credentials: 'include',
             body: JSON.stringify(send)
         });
-
+        const response = await res.json();
+        var num = response.deleted;
         if(!res.ok){
             if(res.status === 401){
                 return await sendRefreshToken();
@@ -27,10 +28,8 @@ async function main(form) {
         }
 
         if(num > 0){
-            window.location = 'deleteConfirm.html?number=' + num;
+            window.location = 'deleteConfirm.html?number=' + num + '&type=1';
         }
-
-
 
     } catch(err){
         console.log(err.stack);
@@ -44,6 +43,17 @@ async function populate() {
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
         });
+        const response = await res.json();
+        var select = document.getElementById("yearVals");
+
+        for(let i = 0; i < response.length; i++){
+            var option = document.createElement("option");
+            option.value = response[i].year;
+            option.name = "year";
+            option.innerHTML = response[i].year;
+            select.appendChild(option);
+        }
+
         if(!res.ok){
             if(res.status === 401){
                 return await sendRefreshToken();

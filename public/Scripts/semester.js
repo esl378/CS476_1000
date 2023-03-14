@@ -2,7 +2,7 @@ async function main(val) {
     const year = val;
 
     try{
-        const res = await fetch('http://localhost:4111/semesterRoute', {
+        const res = await fetch('http://localhost:4111/sRoute', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
