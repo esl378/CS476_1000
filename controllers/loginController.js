@@ -33,7 +33,7 @@ const handleLogin = async (req, res) => {
         
         res.redirect('/maintenance');
     } else{
-        return res.render(__dirname + "/../views/login.html", {userName:foundUser.uid,passwordField:'Password did not matched'});
+        return res.render(__dirname + "/../views/login.html", {userName:foundUser.uid,passwordField:'Password did not match'});
     }
 }
 
