@@ -25,26 +25,43 @@
         <div class="wrapper">
             <div class="inner-wrapper text-center">
                 <h2 class="title">Administration Login</h2>
-                <form action="./maintenance.html" id="formvalidate">
+                <form action="/login" method="post" id="formvalidate">
+                
                     <div class="input-group">
-                        <label class="placeholder" for="userName">User ID</label>
+                        <% /* <label class="placeholder" for="userName">User ID </label> */ %>
+                        
                         <input class="form-control"
                                name="userName"
                                id="userName"
                                type="text"
-                               placeholder=""/>
+                               required
+                               placeholder="User Id"
+                               
+                               <% if (typeof userName != 'undefined') { %> value =  "<%= userName %>" <% }  %>
+                               
+                               />
+                            <% if (typeof userField != 'undefined') { %>
+                                <h6 style="color:red;margin-top: 10px;margin-bottom: 0px"> *<%= userField %> </h6>
+                            <% }  %>
+
+                            
                         <span class="lighting"></span>
                     </div>
                     <div class="input-group">
-                        <label class="placeholder" for="userPassword">Password</label>
+                        <% /* <label class="placeholder" for="userPassword">Password</label> */ %>
                         <input class="form-control"
                                name="userPassword"
                                id="userPassword"
                                type="password"
-                               placeholder=""/>
+                               required
+                               placeholder="Password"/>
+                            <% if (typeof passwordField != 'undefined') { %>
+                                <h6 style="color:red;margin-top: 10px;margin-bottom: 0px"> *<%= passwordField %> </h6>
+                            <% }  %>
                         <span class="lighting"></span>
                     </div>
                     <button type="submit" id="login">Login</button>
+                    <% /*
                     <div class="clearfix supporter">
                         <div class="pull-left remember-me">
                             <input id="rememberMe" type="checkbox">
@@ -52,10 +69,12 @@
                         </div>
                         <a class="forgot pull-right" href="#">Forgot Password?</a>
                     </div>
+                    */ %>
+                
                 </form>
             </div>
             <div class="signup-wrapper text-center">
-                <a href="#">Visit our university website. <span class="text-primary">Here</span></a>
+                <a href="https://www.uregina.ca/">Visit our university website. <span class="text-primary">Here</span></a>
             </div>
         </div>
     </body>
