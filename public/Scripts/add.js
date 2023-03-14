@@ -1,9 +1,3 @@
-const form = document.getElementById("form");
-form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    daddyFunky(form);
-})
-
 class Semester {
     constructor(name,heldIn,strtDate,endDate,year) {
         this.name = name;
@@ -339,11 +333,30 @@ function createDTO() {
         }
     }
 
-    console.log(JSON.stringify(dto));
+    return JSON.stringify(dto);
 
 }
 
-async function daddyFunky(form) {
-    const formData = new FormData;
+async function daddyFunky() {
+    const dto = createDTO();
+    try{
+        const result = await fetch('https://localhost:4111/add', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: dto
+        });
 
+        if(!result.ok) {
+            if(result.status == 401) {
+                return await sendRefreshToken();
+            }
+            throw new Error(`${result.status} ${result.statusText}`);
+        }
+
+    } catch(err) {
+        console.log("Daddy's not home, got milk; never came back");
+    }
 }
