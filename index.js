@@ -44,16 +44,15 @@ app.use('/auth', require('./routes/auth'));
 app.use('/register', require('./routes/register'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
-<<<<<<< HEAD
 //app.use('/monthRoute', require('./routes/monthRoute'));
 //app.use('/semesterRoute', require('./routes/semesterRoute'));
-=======
 app.use('/add', require('./routes/add'))
->>>>>>> 6c40d557e3782c448a7ac2bf05d7ff506c68467b
 
 
-app.use(verifyjwt);
+
+//app.use(verifyjwt);
 app.use('/del', require("./routes/del")); //used to test that the verification works
+app.use('/delp', require("./routes/populate")); //used to test that the verification works
 //I commented out this code just in case it messes with the page retrievals
 //The web server should now serve our html pages
 //app.set('view engine', 'ejs');

@@ -5,7 +5,7 @@ const Year = require('../models/Year');
 const handleDelete = async (req, res) => {
     const delYear = req.body;
     const val = delYear.year;
-    console.log(val);
+    console.log(typeof(val));
     try{
         const result1 = await Event.deleteMany({year: val}).exec();
         const result2 = await Semester.deleteMany({year: val}).exec();
@@ -24,6 +24,7 @@ const handleDelete = async (req, res) => {
    
 
 }
+
 
 module.exports = {handleDelete};
 
