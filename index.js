@@ -44,8 +44,8 @@ app.use('/auth', require('./routes/auth'));
 app.use('/register', require('./routes/register'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
-//app.use('/monthRoute', require('./routes/monthRoute'));
-//app.use('/semesterRoute', require('./routes/semesterRoute'));
+app.use('/monthRoute', require('./routes/monthRoute'));
+app.use('/semesterRoute', require('./routes/semesterRoute'));
 
 app.use('/add', require('./routes/add'))
 
