@@ -10,10 +10,7 @@ async function main(val) {
         });
 
         if(!response.ok){
-            if(response.status === 401){
-                return await sendRefreshToken();
-            }
-            throw new Error
+            throw new Error(`${response.status} ${response.statusText}`);
         }
     } catch(err){
         
