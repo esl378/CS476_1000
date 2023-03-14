@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const semesterSchema = new Schema({
-    year: String,
-    name: String,
+    year: String, //"yyyy-yyyy"
+    name: String, //"sem_yyyy"
     strtDate: String,
     endDate: String,
     heldIn: String

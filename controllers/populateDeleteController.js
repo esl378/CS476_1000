@@ -4,7 +4,7 @@ const handlePopulate = async (req, res) => {
     try{
         const years = await Year.find();
         if(!years) return res.status(204).json({'message': 'No years found, calander empty.'});
-        res.send.json(years);
+        res.render(__dirname + "/../views/delete.html", (years));
     } catch(err){
         res.status(500).json({'message': err.message});
     }
