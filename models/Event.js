@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema( {
-    strtDate: String,
-    endDate: String,
-    semester: String,
+    description: String,
+    strtDate: Date,
+    endDate: Date,
     year: String,
-    description: String
-}, {typeKey: '$type'});
+    semester: String,
+}, {typeKey: '$type', versionKey: false});
 
 /* const eventSchema = new Schema({
     strtDate: {
