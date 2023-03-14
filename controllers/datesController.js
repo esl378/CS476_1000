@@ -3,16 +3,19 @@ const Semester = require('../models/Semester');
 const Year = require('../models/Year');
 
 const handleAddYear = async (req, res) => {
-    try{
-        const yourFunc = await Event.create({
-            "year": "20001",
-            "description": "Winter",
-            "endDate": "2001-02-02",
-            "strtDate": "2003-01-01",
-            "semester": "Winter"
-        });
 
-        res.status(201).json({'success': `Succeed ${yourFunc}`});
+    const requestReceiver = req.body;
+
+    const semestersList = requestReceiver.semesters;
+    const yearsList = requestReceiver.year;
+    const eventsList = requestReceiver.event;
+
+    try{
+        const result1 = await Event.insertMany(eventsList);
+        const result2 = await Semester.insertMany(semestersList);
+        const result3 = await Event.insertMany(yearsList);
+
+        res.status(201).json({'success': `Added events ${result1}\n Added semesters ${result2}\n Added years ${result3}`});
 
     } catch(err) {
         res.status(500).json({'message': err.message});
