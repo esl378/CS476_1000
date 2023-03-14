@@ -54,7 +54,7 @@ app.use('/logout', require('./routes/logout'));
 app.use('/monthRoute', require('./routes/monthRoute'));
 app.use('/semesterRoute', require('./routes/semesterRoute'));
 app.use('/add', require('./routes/add'));
-app.use('/getDates', require('./routes/getEvents'));
+app.use('/getEvents', require('./routes/getEvents'));
 app.use('/getYears', require('./routes/getYears'));
 app.use('/getSemesters', require('./routes/getSemesters'));
 
