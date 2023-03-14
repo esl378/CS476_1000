@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const semesterSchema = new Schema({
-    year: String, //"yyyy-yyyy"
     name: String, //"sem_yyyy"
-    strtDate: String,
-    endDate: String,
+    strtDate: Date,
+    endDate: Date,
+    year: String, //"yyyy-yyyy"
     heldIn: String
 }, {typeKey: '$type', versionKey: false});
 
