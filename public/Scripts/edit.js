@@ -250,6 +250,10 @@ function createDateObject() {
 }
 
 async function mommyFunky() {
+    let jsonSemesters;
+    let jsonYears;
+    let jsonEvents;
+    //Getting semester data
     try{
         const result = await fetch('http://localhost:4111/getSemesters', {
             method:'POST',
@@ -259,7 +263,7 @@ async function mommyFunky() {
             credentials: 'include'
         });
         
-        const fuckaMe = await result.json();
+        jsonSemesters = await result.json();
 
         if(!result.ok) {
             if(result.status == 401) {
@@ -269,6 +273,64 @@ async function mommyFunky() {
         }
 
     } catch(err) {
-        console.log("Mommy met the mailman");
+        console.log("Couldn't get the semesters");
     }
+    
+    //Getting Event data
+    try{
+        const result = await fetch('http://localhost:4111/getEvents', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
+        
+        jsonEvents = await result.json();
+
+        if(!result.ok) {
+            if(result.status == 401) {
+                return await sendRefreshToken();
+            }
+            throw new Error(`${result.status} ${result.statusText}`);
+        }
+
+    } catch(err) {
+        console.log("Couldn't get the events");
+    }
+
+    //Getting the Year data
+    try{
+        const result = await fetch('http://localhost:4111/getYears', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
+        
+        jsonYears = await result.json();
+
+        if(!result.ok) {
+            if(result.status == 401) {
+                return await sendRefreshToken();
+            }
+            throw new Error(`${result.status} ${result.statusText}`);
+        }
+
+    } catch(err) {
+        console.log("Couldn't get the year");
+    }
+
+    console.log("The year data is: ");
+    console.log(jsonYears);
+    console.log("\n\n")
+
+    console.log("The event data is: ");
+    console.log(jsonEvents);
+    console.log("\n\n")
+
+    console.log("The semester data is: ");
+    console.log(jsonSemesters);
+    console.log("\n\n")
 }
