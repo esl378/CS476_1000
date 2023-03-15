@@ -10,8 +10,8 @@ const handleGetSem = async (req, res) => {
     const evtList = infoReceiver.events;
 
     try{
-        const semResult = await Semester.find(semList).exec();
-        const yrResult = await Year.find(yrList).exec();
+        const semResult = await Semester.find(semList).sort({"name": 1}).exec();
+        const yrResult = await Year.find(yrList).sort({"year": 1}).exec();
         const evtResult = await Event.find(evtList).exec();
         //const results = yrResult.concat(semResult.concat(evtResult));
         //console.log(results);

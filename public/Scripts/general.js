@@ -8,7 +8,7 @@ function getD() {
     var month = months[dt.getMonth()];
     var day = dt.getDate();
     document.getElementById("date").innerHTML = month + " " + day + ", " + year;
-    
+    return month + " " + day + ", " + year;
 }
 
 async function sendRefreshToken(){
@@ -28,4 +28,4 @@ async function sendRefreshToken(){
     }
 }
 
-window.onload = getD;
+window.onload = getD();
