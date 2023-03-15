@@ -8,7 +8,24 @@ function getD() {
     var month = months[dt.getMonth()];
     var day = dt.getDate();
     document.getElementById("date").innerHTML = month + " " + day + ", " + year;
-    /* console.log("balls"); */
+    
+}
+
+async function sendRefreshToken(){
+
+    try{
+        const res = await fetch('http://localhost:4111/del',{
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            credentials: 'include'
+        });
+        if(res.ok){
+            return res.status;
+        }
+
+    } catch(err){
+        console.log(err.stack);
+    }
 }
 
 window.onload = getD;
