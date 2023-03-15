@@ -379,6 +379,8 @@ function createDateObject(description, strtDate, endDate, year, semester) {
         var name = document.createElement("option");
         name.value = year;
         name.innerHTML = year;
+
+        opt.appendChild(name);
     }
 
 //
@@ -488,6 +490,10 @@ async function mommyFunky() {
             );
         events.push(tmpEven);
     } 
+
+    for(let i = 0; i < years.length; i++) {
+        createYearObject(years[i].year);
+    }
 
     for(let i = 0; i < events.length; i++) {
         createDateObject(
