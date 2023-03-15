@@ -324,64 +324,71 @@ function createDateObject() {
 //Adds a new date object
 function createDateObject(description, strtDate, endDate, year, semester) {
 
-    //Get the form to add a new object
-        var dates = document.getElementById("dates");
-        var num = dates.childNodes.length + 1;
-        
-    //Create the outer div
-        var div = document.createElement("div");
-        div.className = "date";
+//Get the form to add a new object
+    var dates = document.getElementById("dates");
+    var num = dates.childNodes.length + 1;
     
-        //Title
-        var name = document.createElement("h3");
-        name.innerHTML = "Date " + num;
-        div.appendChild(name);
-    
-        //Add the inputs to form
-        //Description
-        name = document.createElement("p");
-        name.innerHTML = "Description: " + description;
-        //Add name to div
-        div.appendChild(name);
-    
-        //Start date
-        name = document.createElement("p");
-        name.innerHTML = "Start date: " + strtDate;
-        //Add name to div
-        div.appendChild(name);
-    
-        //End date
-        name = document.createElement("p");
-        name.innerHTML = "End date: " + endDate;
-        //Add name to div
-        div.appendChild(name);
+//Create the outer div
+    var div = document.createElement("div");
+    div.className = "date";
 
-        //Year
-        name = document.createElement("p");
-        name.innerHTML = "Year: " + year;
-        //Add name to div
-        div.appendChild(name);
+    //Title
+    var name = document.createElement("h3");
+    name.innerHTML = "Date " + num;
+    div.appendChild(name);
 
-        //Semester
-        name = document.createElement("p");
-        name.innerHTML = "Semester: " + semester;
-        //Add name to div
-        div.appendChild(name);
-    
-        //Append the div to the form
-        dates.appendChild(div);
-    }
+    //Add the inputs to form
+    //Description
+    name = document.createElement("p");
+    name.innerHTML = "Description: " + description;
+    //Add name to div
+    div.appendChild(name);
 
-    //Creates a new Year object
-    function createYearObject(year) {
-        var opt = document.getElementById("year");
+    //Start date
+    name = document.createElement("p");
+    name.innerHTML = "Start date: " + strtDate;
+    //Add name to div
+    div.appendChild(name);
 
-        var name = document.createElement("option");
-        name.value = year;
-        name.innerHTML = year;
+    //End date
+    name = document.createElement("p");
+    name.innerHTML = "End date: " + endDate;
+    //Add name to div
+    div.appendChild(name);
 
-        opt.appendChild(name);
-    }
+    //Year
+    name = document.createElement("p");
+    name.innerHTML = "Year: " + year;
+    //Add name to div
+    div.appendChild(name);
+
+    //Semester
+    name = document.createElement("p");
+    name.innerHTML = "Semester: " + semester;
+    //Add name to div
+    div.appendChild(name);
+
+    //Append the div to the form
+    dates.appendChild(div);
+}
+
+//Creates a new Year object
+function createYearObject(year) {
+    var opt = document.getElementById("year");
+
+    var name = document.createElement("option");
+    name.value = year;
+    name.innerHTML = year;
+
+    opt.appendChild(name);
+}
+
+    //Grabs year data from the page
+function getSelectedYear() {
+
+    var dropDown = document.getElementById("year").selectedOptions[0].value;
+    return dropDown;
+}
 
 //
 //                              This function fills the objects
@@ -460,6 +467,8 @@ async function mommyFunky() {
         console.log("Couldn't get the year");
     }
 
+    //------------------Adding the data to the data structure-----------------------------------------------------------------------------
+
     for(let i = 0; i < jsonYears.length; i++) {
         let tmpYear = new Year(jsonYears[i].year, jsonYears[i]._id);
         years.push(tmpYear);
@@ -490,11 +499,20 @@ async function mommyFunky() {
             );
         events.push(tmpEven);
     } 
+    displayYear();
+}
+
+ //---------------------------------------------------Displaying the data from the data structure----------------------------------------------------------------------------------------
+
+function displayYear () {
 
     for(let i = 0; i < years.length; i++) {
         createYearObject(years[i].year);
     }
 
+}
+
+function displayEvents () {
     for(let i = 0; i < events.length; i++) {
         createDateObject(
             events[i].description, 
@@ -503,7 +521,10 @@ async function mommyFunky() {
             events[i].year, 
             events[i].semester);
     }
+}
 
+//Displays all the semesters
+function displaySemesters() {
     for(let i = 0; i < semesters.length; i++) {
         createSemesterObject(
             semesters[i].name, 
@@ -511,5 +532,45 @@ async function mommyFunky() {
             semesters[i].endDate, 
             semesters[i].year, 
             semesters[i].heldIn);
+    }
+}
+
+//Displays the semesters if the year is selected
+function displaySemesters(year) {
+
+    //destroy semesters then repopulate it
+    destroySemesters();
+
+    //case 1 year is invalid
+    if(year == "invalid") {
+        return;
+    }
+    //case 2 year is defined
+    for(let i = 0; i < semesters.length; i++) {
+        console.log("The year is: " + year);
+        console.log("The semesters year is: " + semesters[i].year);
+        if(year === semesters[i].year) {
+            createSemesterObject(
+                semesters[i].name, 
+                semesters[i].strtDate, 
+                semesters[i].endDate, 
+                semesters[i].year, 
+                semesters[i].heldIn
+                );
+        }
+    }
+}
+
+function displayData() {
+    displayYear();
+    displayEvents();
+    displaySemesters();
+}
+
+function destroySemesters() {
+    let sem = document.getElementById("semesters");
+    console.log(sem);
+    while(sem.lastElementChild) {
+        sem.removeChild(sem.lastElementChild);
     }
 }
