@@ -344,9 +344,7 @@ async function daddyFunky() {
             throw new Error(`${result.status} ${result.statusText}`);
         }
 
-        window.location = 'deleteConfirm.html?addedYear=true';
-
     } catch(err) {
-        window.location = 'deleteConfirm.html?addedYear=false';
+        console.log("Big error");
     }
 }
