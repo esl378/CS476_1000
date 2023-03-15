@@ -350,10 +350,11 @@ async function mommyFunky() {
             jsonEvents[i].strtDate,
             jsonEvents[i].endDate,
             jsonEvents[i].year,
-            jsonEvents[i].description
+            jsonEvents[i].description,
+            jsonEvents[i]._id
         );
-        console.log(tmpEven);
         events.push(tmpEven);
     } 
 
+    console.log(events);
 }
