@@ -537,7 +537,7 @@ function displaySemesters() {
 
 //Displays the semesters if the year is selected
 function displaySemesters(year) {
-
+    console.log("I was run");
     //destroy semesters then repopulate it
     destroySemesters();
 
@@ -573,4 +573,9 @@ function destroySemesters() {
     while(sem.lastElementChild) {
         sem.removeChild(sem.lastElementChild);
     }
+}
+
+//For adding specific semesters
+function addingSemesters() {
+    displaySemesters(getSelectedYear());
 }
