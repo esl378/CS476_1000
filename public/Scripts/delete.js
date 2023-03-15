@@ -1,3 +1,4 @@
+
 const form = document.getElementById("del")
 form.addEventListener("submit", function(Event) {
     Event.preventDefault();
@@ -28,7 +29,7 @@ async function main(form) {
         }
 
         if(num > 0){
-            window.location = 'deleteConfirm.html?type=0&number=' + num;
+            window.location = 'confirm.html?type=0&number=' + num;
         }
 
     } catch(err){
@@ -37,6 +38,7 @@ async function main(form) {
 }
 
 async function populate() {
+    console.log("balls");
     try{
         const res = await fetch('http://localhost:4111/delp', {
             method: 'POST',
@@ -65,4 +67,4 @@ async function populate() {
         console.log(err.stack);
     }
 }
-window.onload = populate;
+window.onload = populate();
