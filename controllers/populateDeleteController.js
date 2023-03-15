@@ -2,7 +2,7 @@ const Year = require('../models/Year');
 
 const handlePopulate = async (req, res) => {
     try{
-        const years = await Year.find();
+        const years = await Year.find().sort({"year": 1});
         if(!years) return res.status(204).json({'message': 'No years found, calander empty.'});
         
         res.json(years);
