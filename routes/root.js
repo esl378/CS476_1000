@@ -48,7 +48,7 @@ router.get('/delete(.html)?', (req, res) => {
 
 //deleteConfirm page
 router.get('/confirm(.html)?', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'deleteConfirm.html'));
+    res.sendFile(path.join(__dirname, '..', 'views', 'confirm.html'));
 });
 
 

@@ -62,7 +62,7 @@ async function populate() {
             }
             throw new Error(`${res.status} ${res.statusText}`);
         }
-        console.log(res);
+        
     }catch(err){
         console.log(err.stack);
     }

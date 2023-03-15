@@ -8,7 +8,7 @@ function display(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const type = urlParams.get('type');
-    
+    console.log("balls");
     //delete confirmation
     if(type == 0){
         //create the header for delete confirmation
