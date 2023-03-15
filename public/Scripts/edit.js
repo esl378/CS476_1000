@@ -537,7 +537,6 @@ function displaySemesters() {
 
 //Displays the semesters if the year is selected
 function displaySemesters(year) {
-    console.log("I was run");
     //destroy semesters then repopulate it
     destroySemesters();
 
@@ -547,8 +546,6 @@ function displaySemesters(year) {
     }
     //case 2 year is defined
     for(let i = 0; i < semesters.length; i++) {
-        console.log("The year is: " + year);
-        console.log("The semesters year is: " + semesters[i].year);
         if(year === semesters[i].year) {
             createSemesterObject(
                 semesters[i].name, 
@@ -557,6 +554,28 @@ function displaySemesters(year) {
                 semesters[i].year, 
                 semesters[i].heldIn
                 );
+        }
+    }
+}
+
+//Displays the semesters if the year is selected
+function displayEvents(year) {
+    //destroy semesters then repopulate it
+    destroyEvents();
+
+    //case 1 year is invalid
+    if(year == "invalid") {
+        return;
+    }
+    //case 2 year is defined
+    for(let i = 0; i < events.length; i++) {
+        if(year === events[i].year) {
+            createDateObject(
+                events[i].description, 
+                events[i].strtDate, 
+                events[i].endDate, 
+                events[i].year, 
+                events[i].semester);
         }
     }
 }
@@ -575,7 +594,16 @@ function destroySemesters() {
     }
 }
 
+function destroyEvents() {
+    let even = document.getElementById("dates");
+    console.log(even);
+    while(even.lastElementChild) {
+        even.removeChild(even.lastElementChild);
+    }
+}
+
 //For adding specific semesters
 function addingSemesters() {
     displaySemesters(getSelectedYear());
+    displayEvents(getSelectedYear());
 }
