@@ -57,6 +57,7 @@ app.use('/add', require('./routes/add'));
 app.use('/getEvents', require('./routes/getEvents'));
 app.use('/getYears', require('./routes/getYears'));
 app.use('/getSemesters', require('./routes/getSemesters'));
+app.use('/semp', require("./routes/semPop")); 
 
 
 
