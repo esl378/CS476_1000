@@ -1,4 +1,8 @@
-
+const form = document.getElementById("forms");
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    goodbye();
+})
 
 function display(){
     //get the two parent elements
@@ -8,7 +12,7 @@ function display(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const type = urlParams.get('type');
-    
+ 
     //delete confirmation
     if(type == 0){
         //create the header for delete confirmation
@@ -49,4 +53,8 @@ function display(){
     }
 }
 
+function goodbye(){
+    console.log("balls");
+    location.href = 'http://localhost:4111/maintenance';
+}
 window.onload = display;

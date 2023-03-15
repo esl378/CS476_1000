@@ -38,7 +38,6 @@ async function main(form) {
 }
 
 async function populate() {
-    console.log("balls");
     try{
         const res = await fetch('http://localhost:4111/delp', {
             method: 'POST',
@@ -62,7 +61,7 @@ async function populate() {
             }
             throw new Error(`${res.status} ${res.statusText}`);
         }
-        console.log(res);
+        
     }catch(err){
         console.log(err.stack);
     }
