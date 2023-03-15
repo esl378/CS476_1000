@@ -384,7 +384,7 @@ function createDateObject(description, strtDate, endDate, year, semester) {
     }
 
 //
-//                              This is the function that does the object stuff
+//                              This function fills the objects
 //
 
 async function mommyFunky() {
