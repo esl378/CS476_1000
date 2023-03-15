@@ -28,7 +28,7 @@ async function main(form) {
         }
 
         if(num > 0){
-            window.location = 'deleteConfirm.html?number=' + num + '&type=1';
+            window.location = 'deleteConfirm.html?type=0&number=' + num;
         }
 
     } catch(err){
