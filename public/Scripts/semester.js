@@ -1,4 +1,5 @@
 const form = document.getElementById("yr")
+form.addEventListener()
 
 async function main(val) {
     const year = val;
