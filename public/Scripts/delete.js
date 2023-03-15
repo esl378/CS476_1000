@@ -38,7 +38,6 @@ async function main(form) {
 }
 
 async function populate() {
-    console.log("balls");
     try{
         const res = await fetch('http://localhost:4111/delp', {
             method: 'POST',

@@ -13,10 +13,11 @@ const handleGetSem = async (req, res) => {
         const semResult = await Semester.find(semList).exec();
         const yrResult = await Year.find(yrList).exec();
         const evtResult = await Event.find(evtList).exec();
-        //console.log(semResult);
+        const results = yrResult.concat(semResult.concat(evtResult));
+        console.log(results);
         //console.log(yrResult);
         //console.log(evtResult);
-        res.status(201).json({'success': `Success`});
+        res.status(201).json(results);
     }catch(err){
         res.status(500).json({'message': err.message});
     }

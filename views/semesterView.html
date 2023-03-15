@@ -35,12 +35,14 @@
                 </form>
             </div>
             <div class="midCenter">
-                <label for="semester">Semester</label>
-                <select name="semester" id="semester" value="Winter">
-                    <option value="Spring/Summer">Spring/Summer</option>
-                    <option value="Fall">Fall</option>
-                    <option value="Winter" selected="selected">Winter</option>
-                </select>
+                <form id="sem" name = "semSel">
+                    <label for="semester">Semester</label>
+                    <select name="semester" id="semVals">
+                        <option value="">Select a Semester</option>
+                       <!--  <option value="Fall">Fall</option>
+                        <option value="Winter" selected="selected">Winter</option> -->
+                    </select>
+                </form>
             </div>
             <form action="./monthView.html" class="midRight">
                 <input type="submit" value="Month View" class="">
@@ -129,7 +131,6 @@
             <a href="./login.html" class="bottomRight">Admin Login</a>
         </footer>
     </body>
-    <!-- <script type = "text/javascript"  src = "/Scripts/semester.js" ></script> -->
-    <script type = "text/javascript"  src = "/Scripts/delete.js" ></script>
+    <script type = "text/javascript"  src = "/Scripts/semester.js" ></script>
     <script type = "text/javascript"  src = "/Scripts/general.js" ></script>
 </html>
