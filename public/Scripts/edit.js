@@ -17,12 +17,13 @@ class Semester {
 
 //Created a class to get the Events into a nice easy to use object
 class Event {
-    constructor(strtDate, endDate, semester="invalid", year, description) {
+    constructor(strtDate, endDate, semester="invalid", year, description, id) {
         this.strtDate = strtDate;
         this.endDate = endDate;
         this.semester = semester;
         this.year = year;
         this.description = description;
+        this.id = id;
     }
     print() {
         console.log("Description: " + this.description);
@@ -35,11 +36,13 @@ class Event {
 
 //Created a class to get the Year into a nice easy to use object
 class Year {
-    constructor(year) {
+    constructor(year, id) {
         this.year = year;
+        this.id = id;
     }
     print() {
-        console.log("The year is: " + year);
+        console.log("The year is: " + this.year);
+        console.log("The id is: " + this.id);
     }
 };
 
@@ -250,6 +253,10 @@ function createDateObject() {
 }
 
 async function mommyFunky() {
+    let jsonSemesters;
+    let jsonYears;
+    let jsonEvents;
+    //Getting semester data
     try{
         const result = await fetch('http://localhost:4111/getSemesters', {
             method:'POST',
@@ -259,7 +266,7 @@ async function mommyFunky() {
             credentials: 'include'
         });
         
-        const fuckaMe = await result.json();
+        jsonSemesters = await result.json();
 
         if(!result.ok) {
             if(result.status == 401) {
@@ -269,6 +276,86 @@ async function mommyFunky() {
         }
 
     } catch(err) {
-        console.log("Mommy met the mailman");
+        console.log("Couldn't get the semesters");
     }
+    
+    //Getting Event data
+    try{
+        const result = await fetch('http://localhost:4111/getEvents', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
+        
+        jsonEvents = await result.json();
+
+        if(!result.ok) {
+            if(result.status == 401) {
+                return await sendRefreshToken();
+            }
+            throw new Error(`${result.status} ${result.statusText}`);
+        }
+
+    } catch(err) {
+        console.log("Couldn't get the events");
+    }
+
+    //Getting the Year data
+    try{
+        const result = await fetch('http://localhost:4111/getYears', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
+        
+        jsonYears = await result.json();
+
+        if(!result.ok) {
+            if(result.status == 401) {
+                return await sendRefreshToken();
+            }
+            throw new Error(`${result.status} ${result.statusText}`);
+        }
+
+    } catch(err) {
+        console.log("Couldn't get the year");
+    }
+
+    for(let i = 0; i < jsonYears.length; i++) {
+        let tmpYear = new Year(jsonYears[i].year, jsonYears[i]._id);
+        console.log(tmpYear);
+        years.push(tmpYear);
+    } 
+    //name,heldIn,strtDate,endDate,year
+    console.log(jsonSemesters);
+
+    for(let i = 0; i < jsonSemesters.length; i++) {
+        let tmpSem = new Semester(jsonSemesters[i].name, jsonSemesters[i].heldIn, jsonSemesters[i].start_Date, jsonSemesters[i].end_Date, jsonSemesters[i].year,jsonSemesters[i]._id);
+        console.log(tmpSem);
+        semesters.push(tmpSem);
+    } 
+
+    for(let i = 0; i < semesters.length; i++) {
+        semesters[i].print();
+    }
+
+    /* for(let i = 0; i < jsonYears.length; i++) {
+        let tmpSem = new Year(jsonYears[i].year, jsonYears[i]._id);
+        console.log(tmpSem);
+        years.push(tmpSem);
+    }  */
+
+    
+
+    /* console.log("The event data is: ");
+    console.log(jsonEvents);
+    console.log("\n\n")
+
+    console.log("The semester data is: ");
+    console.log(jsonSemesters);
+    console.log("\n\n") */
 }
