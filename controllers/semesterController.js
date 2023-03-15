@@ -2,27 +2,24 @@ const Event = require('../models/Event');
 const Semester = require('../models/Semester');
 const Year = require('../models/Year');
 
-const handleGetSemester = async (req, res) => {
-    const getYear = req.body;
-    const yearVal = getYear.year;
-    const semesterVal = getYear.semester;
-    console.log(yearVal);
-    console.log(semesterVal);
-    //|| !semesters || !events
-    if(!getYear) return res.status(400).json({'message': 'Invalid'});
+const handleGetSem = async (req, res) => {
+    const infoReceiver = req.body;
+
+    const semList = infoReceiver.semesters;
+    const yrList = infoReceiver.years;
+    const evtList = infoReceiver.events;
 
     try{
-        Event.find(
-            {"year": yearVal, "semester": semesterVal},
-            (err, data)=>{
-                if(err){console.log(err)}
-                else {console.log(data)}
-            }
-            );
-
-    } catch(err) {
+        const semResult = await Semester.find(semList).exec();
+        const yrResult = await Year.find(yrList).exec();
+        const evtResult = await Event.find(evtList).exec();
+        //console.log(semResult);
+        //console.log(yrResult);
+        //console.log(evtResult);
+        res.status(201).json({'success': `Success`});
+    }catch(err){
         res.status(500).json({'message': err.message});
     }
 }
 
-module.exports = {handleGetSemester};
+module.exports = {handleGetSem};
