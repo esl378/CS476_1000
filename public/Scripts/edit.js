@@ -139,75 +139,6 @@ function hideDates() {
 //
 
 //Adds a new semester object to the form
-function createSemesterObject() {
-
-    //Get the semesters div
-    var semesters = document.getElementById("semesters");
-    var num = semesters.childNodes.length + 1;
-
-    //Create outer div
-    var div = document.createElement("div");
-    div.className = "semester";
-
-    //Title
-    var name = document.createElement("h3");
-    name.innerHTML = "Semester " + num;
-    div.appendChild(name);
-
-    //Description
-    //Title
-    var name = document.createElement("p");
-    name.innerHTML = "Description";
-    //Input
-    var input = document.createElement("input");
-    input.type = "text";
-    input.className = "sem";
-    input.name = "name";
-    input.id = "sem";
-    //Add input to p
-    name.appendChild(input);
-    //Add name to div
-    div.appendChild(name);
-
-
-    //Start date
-    //Title
-    var name = document.createElement("p");
-    name.innerHTML = "Start date";
-    //Input
-    var input = document.createElement("input");
-    input.type = "date";
-    input.className = "start";
-    input.name = "strt_date";
-    input.id = "start";
-    //Add input to p
-    name.appendChild(input);
-    //Add name to div
-    div.appendChild(name);
-
-    //End date
-    //Title
-    var name = document.createElement("p");
-    name.innerHTML = "Start date";
-    //Input
-    var input = document.createElement("input");
-    input.type = "date";
-    input.className = "end";
-    input.name = "end_date";
-    input.id = "end";
-    //Add input to p
-    name.appendChild(input);
-    //Add name to div
-    div.appendChild(name);
-
-
-    //add div to semesters div
-    semesters.appendChild(div);
-
-
-}
-
-//Adds a new semester object to the form
 function createSemesterObject(description, strtDate, endDate, year, heldIn) {
 
     //Get the semesters div
@@ -225,77 +156,27 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn) {
 
     //Description
     var name = document.createElement("p");
-    name.innerHTML = "Description: " + description;
-    //Add name to div
-    div.appendChild(name);
-
-
-    //Start date
-    var name = document.createElement("p");
-    name.innerHTML = "Start date: " + strtDate;
-    div.appendChild(name);
-
-    //End date
-    var name = document.createElement("p");
-    name.innerHTML = "End date: " + endDate;
-    div.appendChild(name);
-
-    //year
-    var name = document.createElement("p");
-    name.innerHTML = "Year: " + year;
-    div.appendChild(name);
-
-    //Held in 
-    var name = document.createElement("p");
-    name.innerHTML = "Held in: " + heldIn;
-    div.appendChild(name);
-
-
-    //add div to semesters div
-    semesters.appendChild(div);
-
-}
-
-//Adds a new date object
-function createDateObject() {
-
-//Get the form to add a new object
-    var dates = document.getElementById("dates");
-    var num = dates.childNodes.length + 1;
-//Create the outer div
-    var div = document.createElement("div");
-    div.className = "date";
-
-    //Title
-    var name = document.createElement("h3");
-    name.innerHTML = "Date " + num;
-    div.appendChild(name);
-
-    //Add the inputs to form
-    //Description
-    //Title
-    var name = document.createElement("p");
-    name.innerHTML = "Description";
+    name.innerHTML = "Description: " + description + " change to ";
     //Input
     var input = document.createElement("input");
     input.type = "text";
-    input.className = "desc";
-    input.name = "description";
-    input.id = "desc";
+    input.className = "sem";
+    input.name = "name";
+    input.id = "sem";
     //Add input to p
     name.appendChild(input);
     //Add name to div
     div.appendChild(name);
 
+
     //Start date
-    //Title
     var name = document.createElement("p");
-    name.innerHTML = "Start date";
+    name.innerHTML = "Start date: " + strtDate + " change to ";
     //Input
     var input = document.createElement("input");
     input.type = "date";
     input.className = "start";
-    input.name = "strtDate";
+    input.name = "strt_date";
     input.id = "start";
     //Add input to p
     name.appendChild(input);
@@ -303,22 +184,51 @@ function createDateObject() {
     div.appendChild(name);
 
     //End date
-    //Title
     var name = document.createElement("p");
-    name.innerHTML = "End date";
+    name.innerHTML = "End date: " + endDate + " change to ";
     //Input
     var input = document.createElement("input");
     input.type = "date";
     input.className = "end";
-    input.name = "endDate";
+    input.name = "end_date";
     input.id = "end";
     //Add input to p
     name.appendChild(input);
     //Add name to div
     div.appendChild(name);
 
-    //Append the div to the form
-    dates.appendChild(div);
+    //year
+    var name = document.createElement("p");
+    name.innerHTML = "Year: " + year + " change to ";
+    //Input
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "year";
+    input.name = "year";
+    input.id = "tear";
+    //Add input to p
+    name.appendChild(input);
+    //Add name to div
+    div.appendChild(name);
+
+    //Held in 
+    var name = document.createElement("p");
+    name.innerHTML = "Held in: " + heldIn + " change to ";
+    //Input
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "heldIn";
+    input.name = "heldIn";
+    input.id = "heldIn";
+    //Add input to p
+    name.appendChild(input);
+    //Add name to div
+    div.appendChild(name);
+
+
+    //add div to semesters div
+    semesters.appendChild(div);
+
 }
 
 //Adds a new date object
@@ -340,33 +250,84 @@ function createDateObject(description, strtDate, endDate, year, semester) {
     //Add the inputs to form
     //Description
     name = document.createElement("p");
-    name.innerHTML = "Description: " + description;
+    name.innerHTML = "Description: " + description + " change to ";
+    //Add name to div
+    //Input
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "desc";
+    input.name = "description";
+    input.id = "desc";
+    //Add input to p
+    name.appendChild(input);
     //Add name to div
     div.appendChild(name);
 
     //Start date
     name = document.createElement("p");
-    name.innerHTML = "Start date: " + strtDate;
+    name.innerHTML = "Start date: " + strtDate + " change to ";
+    //Add name to div
+    //Input
+    var input = document.createElement("input");
+    input.type = "date";
+    input.className = "start";
+    input.name = "strtDate";
+    input.id = "start";
+    //Add input to p
+    name.appendChild(input);
     //Add name to div
     div.appendChild(name);
 
     //End date
     name = document.createElement("p");
-    name.innerHTML = "End date: " + endDate;
+    name.innerHTML = "End date: " + endDate + " change to ";
+    //Input
+    var input = document.createElement("input");
+    input.type = "date";
+    input.className = "end";
+    input.name = "endDate";
+    input.id = "end";
+    //Add input to p
+    name.appendChild(input);
     //Add name to div
     div.appendChild(name);
+
+    //Append the div to the form
+    dates.appendChild(div);
 
     //Year
     name = document.createElement("p");
-    name.innerHTML = "Year: " + year;
+    name.innerHTML = "Year: " + year + " change to ";
+    //Input
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "year";
+    input.name = "year";
+    input.id = "year";
+    //Add input to p
+    name.appendChild(input);
     //Add name to div
     div.appendChild(name);
 
+    //Append the div to the form
+    dates.appendChild(div);
+
     //Semester
     name = document.createElement("p");
-    name.innerHTML = "Semester: " + semester;
+    name.innerHTML = "Semester: " + semester + " change to ";
+    //Input
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "semester";
+    input.name = "semester";
+    input.id = "semester";
+    //Add input to p
+    name.appendChild(input);
     //Add name to div
     div.appendChild(name);
+
+    //Append the div to the form
+    dates.appendChild(div);
 
     //Append the div to the form
     dates.appendChild(div);

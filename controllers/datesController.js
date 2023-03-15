@@ -68,28 +68,44 @@ const handlePutYear = async(req, res) => {
     const semesters = requestReceiver.semesters;
     const events = requestReceiver.events;
 
-    console.log(semesters);
-
     try{
-        for(let i = 0; i < semesters.length; i++) {
-            await Semester.findOneAndUpdate(
-                { _id: semesters[i].id},
-                {
-                    $set: { 
-                        name: semesters[i].name,
-                        start_date: semesters[i].strtDate,
-                        end_date: semesters[i].endDate,
-                        year: semesters[i].year,
-                        heldIn: semesters[i].heldIn 
+        if(semesters) {
+            for(let i = 0; i < semesters.length; i++) {
+                await Semester.findOneAndUpdate(
+                    { _id: semesters[i].id},
+                    {
+                        $set: { 
+                            name: semesters[i].name,
+                            start_date: semesters[i].strtDate,
+                            end_date: semesters[i].endDate,
+                            year: semesters[i].year,
+                            heldIn: semesters[i].heldIn 
+                        }
                     }
-                }
-            );
+                );
+            }
+        }
+        if(events) {
+            for(let i = 0; i < events.length; i++) {
+                await Event.findOneAndUpdate(
+                    { _id: events[i].id},
+                    {
+                        $set: { 
+                            description: events[i].description,
+                            strtDate: events[i].strtDate,
+                            endDate: events[i].endDate,
+                            year: events[i].year,
+                            semester: events[i].semester 
+                        }
+                    }
+                );
+            }
         }
 
         res.status(201).json({'success': `Success`});
     } catch(err){
 
-        res.status(500).json({'message': 'You no work'});
+        res.status(500).json({'message': err.message});
     
     }
 }
