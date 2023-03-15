@@ -39,18 +39,26 @@ async function semPopulate() {
             credentials: 'include',
         });
         const response = await res.json();
-        console.log(...response);
+        console.log(response);
         var yearSelect = document.getElementById("yearVals");
         var semSelect = document.getElementById("semVals");
 
-        for(let i = 0; i < response.length; i++){
+        for(let i = 0; i < response.yrResult.length; i++){
             var option = document.createElement("option");
-            option.value = response[i].year;
+            option.value = response.yrResult[i].year;
             option.name = "semester";
-            option.innerHTML = response[i].year;
-            select.appendChild(option);
+            option.innerHTML = response.yrResult[i].year;
+            yearSelect.appendChild(option);
         }
 
+        for(let i = 0; i < response.semResult.length; i++){
+            var option = document.createElement("option");
+            option.value = response.semResult[i].name;
+            option.name = "semester";
+            option.innerHTML = response.semResult[i].name;
+            semSelect.appendChild(option);
+        }
+        
         if(!res.ok){
             if(res.status === 401){
                 return await sendRefreshToken();
