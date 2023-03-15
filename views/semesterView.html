@@ -25,13 +25,15 @@
     <body class="mainContainer">
         <div class="middle" role="contentinfo">
             <div class="midLeft">
-                <label for="year">Academic Year</label>
-                <select name="year" id="year" value="2022-2023">
-                    <option value="2020-2021">2020-2021</option>
-                    <option value="2021-2022">2021-2022</option>
-                    <option value="2022-2023" selected="selected">2022-2023</option>
-                    <option value="2023-2024">2023-2024</option>
-                </select>
+                <form id="del" class="forms" name = "yearSel">
+                    <label for="Year">Academic Year: </label>
+                    <select name="Year" id="yearVals">
+                        <option value="" select="disabled hidden">Select Academic Year</option>
+                        <!-- <option value="2021-2022">2021-2022</option>
+                        <option value="2022-2023" selected="selected">2022-2023</option>
+                        <option value="2023-2024">2023-2024</option> -->
+                    </select>
+                </form>
             </div>
             <div class="midCenter">
                 <label for="semester">Semester</label>
@@ -128,5 +130,6 @@
             <a href="./login.html" class="bottomRight">Admin Login</a>
         </footer>
     </body>
-    <script type = "text/javascript"  src = "/public/Scripts/semester.js" ></script>
+    <!-- <script type = "text/javascript"  src = "/Scripts/semester.js" ></script> -->
+    <script type = "text/javascript"  src = "/Scripts/delete.js" ></script>
 </html>
