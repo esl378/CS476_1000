@@ -15,7 +15,7 @@ const handleAddYear = async (req, res) => {
         const result2 = await Semester.insertMany(semestersList);
         const result3 = await Year.insertMany(yearsList);
 
-        res.status(201).json({'success': `Added events ${result1}\n Added semesters ${result2}\n Added years ${result3}`});
+        res.status(201).json({'success': `Added semesters ${result2}`});
 
     } catch(err) {
         res.status(500).json({'message': err.message});
@@ -61,5 +61,38 @@ const handleGetSemesters = async (req, res) => {
     }
 }
 
+const handlePutYear = async(req, res) => {
 
-module.exports = {handleAddYear, handleGetEvents, handleGetYears, handleGetSemesters};
+    const requestReceiver = req.body;
+
+    const semesters = requestReceiver.semesters;
+    const events = requestReceiver.events;
+
+    console.log(semesters);
+
+    try{
+        for(let i = 0; i < semesters.length; i++) {
+            await Semester.findOneAndUpdate(
+                { _id: semesters[i].id},
+                {
+                    $set: { 
+                        name: semesters[i].name,
+                        start_date: semesters[i].strtDate,
+                        end_date: semesters[i].endDate,
+                        year: semesters[i].year,
+                        heldIn: semesters[i].heldIn 
+                    }
+                }
+            );
+        }
+
+        res.status(201).json({'success': `Success`});
+    } catch(err){
+
+        res.status(500).json({'message': 'You no work'});
+    
+    }
+}
+
+
+module.exports = {handleAddYear, handleGetEvents, handleGetYears, handleGetSemesters, handlePutYear};

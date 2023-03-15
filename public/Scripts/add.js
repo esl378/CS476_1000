@@ -315,7 +315,7 @@ function createDTO() {
 
     for(let i = 0; i < dto.events.length; i++) {
         for(let j = 0; j < dto.semesters.length; j++) {
-            if(dto.events[i].strtDate >= dto.semesters[j].strtDate) {
+            if(dto.events[i].strtDate >= dto.semesters[j].start_date) {
                 dto.events[i].semester = dto.semesters[j].name;
                 break;
             }
@@ -327,6 +327,7 @@ function createDTO() {
 
 async function daddyFunky() {
     const dto = createDTO();
+    console.log(dto);
     try{
         const result = await fetch('http://localhost:4111/add', {
             method:'POST',

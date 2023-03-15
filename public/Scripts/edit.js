@@ -478,8 +478,8 @@ async function mommyFunky() {
         let tmpSem = new Semester(
             jsonSemesters[i].name, 
             jsonSemesters[i].heldIn, 
-            jsonSemesters[i].start_date, 
-            jsonSemesters[i].end_date, 
+            jsonSemesters[i].strtDate, 
+            jsonSemesters[i].endDate, 
             jsonSemesters[i].year,
             jsonSemesters[i]._id
             );
