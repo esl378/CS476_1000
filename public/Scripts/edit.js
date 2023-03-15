@@ -1,6 +1,7 @@
 //Created a class to get the semesters into a nice easy to use object
 class Semester {
     constructor(name,heldIn,strtDate,endDate,year) {
+        console.log(strtDate);
         this.name = name;
         this.strtDate = strtDate;
         this.endDate = endDate;
@@ -330,32 +331,29 @@ async function mommyFunky() {
         console.log(tmpYear);
         years.push(tmpYear);
     } 
-    //name,heldIn,strtDate,endDate,year
-    console.log(jsonSemesters);
 
     for(let i = 0; i < jsonSemesters.length; i++) {
-        let tmpSem = new Semester(jsonSemesters[i].name, jsonSemesters[i].heldIn, jsonSemesters[i].start_Date, jsonSemesters[i].end_Date, jsonSemesters[i].year,jsonSemesters[i]._id);
-        console.log(tmpSem);
+        let tmpSem = new Semester(
+            jsonSemesters[i].name, 
+            jsonSemesters[i].heldIn, 
+            jsonSemesters[i].start_date, 
+            jsonSemesters[i].end_date, 
+            jsonSemesters[i].year,
+            jsonSemesters[i]._id);
+
         semesters.push(tmpSem);
+    }  
+
+    for(let i = 0; i < jsonEvents.length; i++) {
+        let tmpEven = new Event(
+            jsonEvents[i].description,
+            jsonEvents[i].strtDate,
+            jsonEvents[i].endDate,
+            jsonEvents[i].year,
+            jsonEvents[i].description
+        );
+        console.log(tmpEven);
+        events.push(tmpEven);
     } 
 
-    for(let i = 0; i < semesters.length; i++) {
-        semesters[i].print();
-    }
-
-    /* for(let i = 0; i < jsonYears.length; i++) {
-        let tmpSem = new Year(jsonYears[i].year, jsonYears[i]._id);
-        console.log(tmpSem);
-        years.push(tmpSem);
-    }  */
-
-    
-
-    /* console.log("The event data is: ");
-    console.log(jsonEvents);
-    console.log("\n\n")
-
-    console.log("The semester data is: ");
-    console.log(jsonSemesters);
-    console.log("\n\n") */
 }

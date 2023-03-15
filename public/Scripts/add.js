@@ -3,8 +3,8 @@
 class Semester {
     constructor(name,heldIn,strtDate,endDate,year) {
         this.name = name;
-        this.strtDate = strtDate;
-        this.endDate = endDate;
+        this.start_date = strtDate;
+        this.end_date = endDate;
         this.year = year;
         this.heldIn = heldIn;
     }
