@@ -29,15 +29,28 @@ router.get('/monthView(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'monthView.html'));
 });
 
+//login page get html
+router.get('/login(.html)?', (req, res) => {
+    res.render(path.join(__dirname, '..', 'views', 'login.html'),{});
+});
+
+//login page post login
+router.post('/login(.html)?', authController.handleLogin);
+
+//logout
+router.get('/logout', logoutController.handleLogout);
+
+
 //delete page
 router.get('/delete(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'delete.html'));
 });
 
 //deleteConfirm page
-router.get('/deleteConfirm(.html)?', (req, res) => {
+router.get('/confirm(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'deleteConfirm.html'));
 });
+
 
 //add page
 router.get('/add(.html)?', (req, res) => {
@@ -54,16 +67,9 @@ router.get('/edit(.html)?', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'edit.html'));
 });
 
-//login page get html
-router.get('/login(.html)?', (req, res) => {
-    res.render(path.join(__dirname, '..', 'views', 'login.html'),{});
-});
 
-//login page post login
-router.post('/login(.html)?', authController.handleLogin);
 
-//logout
-router.get('/logout', logoutController.handleLogout);
+
 
 
 module.exports = router;

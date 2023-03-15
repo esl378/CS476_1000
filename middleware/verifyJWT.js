@@ -2,10 +2,10 @@ const jwt = require('jsonwebtoken');
 
 
 const verifyJWT = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    if(!authHeader) return res.sendStatus(401);
-    console.log(authHeader); //Form of: 'Bearer Token'
-    const token = authHeader.split(' ')[1];
+    const cookies = req.cookies;
+    if(!cookies?.jwt_access) return res.redirect('/login');
+    
+    const token = cookies.jwt_access;
     jwt.verify(
         token,
         process.env.ACCESS_TOKEN_SECRET, 

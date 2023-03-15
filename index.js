@@ -11,7 +11,7 @@ const corsOptions = require('./config/corsOptions');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
 const app = express();
-
+const router = express.Router();
 const PORT = process.env.PORT || 4111;
 
 //connect to MongoDB
@@ -42,8 +42,9 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 
 //ADD MIDDLEWARE FOR ROUTS HERE
-app.use('/maintenance',authCheck);
-
+app.use('/maintenance(.html)?',verifyjwt);
+app.use('/delete(.html)?', verifyjwt);
+app.use('/confirm(.html)?', verifyjwt);
 
 //app.use('/', require('./routes/login'));
 app.use('/', require('./routes/root'));
@@ -62,7 +63,7 @@ app.use('/semp', require("./routes/semPop"));
 
 
 
-//app.use(verifyjwt);
+app.use(verifyjwt);
 app.use('/del', require("./routes/del")); //used to test that the verification works
 app.use('/delp', require("./routes/populate")); //used to test that the verification works
 //I commented out this code just in case it messes with the page retrievals
