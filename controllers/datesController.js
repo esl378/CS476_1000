@@ -65,29 +65,23 @@ const handlePutYear = async(req, res) => {
     const semesters = requestReceiver.semesters;
     const events = requestReceiver.events;
 
-    console.log(requestReceiver);
-
     console.log("The semesters are: ");
     console.log(semesters);
-    console.log("\n\n");
-
-    console.log("The events are: ");
-    console.log(events);
     console.log("\n\n");
     
 
     try{
         if(semesters) {
             for(let i = 0; i < semesters.length; i++) {
-                await Semester.findOneAndUpdate(
+                const result = await Semester.findOneAndUpdate(
                     { _id: semesters[i].id},
                     {
                         $set: { 
                             name: semesters[i].name,
-                            start_date: semesters[i].strtDate,
-                            end_date: semesters[i].endDate,
+                            strtDate: semesters[i].strtDate,
+                            endDate: semesters[i].endDate,
                             year: semesters[i].year,
-                            heldIn: semesters[i].heldIn 
+                            heldIn: semesters[i].heldIn
                         }
                     }
                 );
@@ -95,7 +89,7 @@ const handlePutYear = async(req, res) => {
         }
         if(events) {
             for(let i = 0; i < events.length; i++) {
-                await Event.findOneAndUpdate(
+                const result = await Event.findOneAndUpdate(
                     { _id: events[i].id},
                     {
                         $set: { 
