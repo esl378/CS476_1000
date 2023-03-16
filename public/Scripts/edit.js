@@ -774,6 +774,9 @@ async function kiddyFunky() {
             throw new Error(`${result.status} ${result.statusText}`);
         }
 
+        numAdded = semestersToUpdate.length + eventsToUpdate.length;
+        window.location = 'confirm.html?type=1&number=' + numAdded;
+
     } catch(err) {
         console.log("Big error");
     }

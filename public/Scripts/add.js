@@ -75,6 +75,8 @@ var semesters = new Array();
 var events = new Array();
 var years = new Array();
 
+var numAdded = 0;
+
 //Hide semesters tab
 function hideSemesters() {
     var semesters = document.getElementById("semesters");
@@ -377,6 +379,8 @@ async function daddyFunky() {
             }
             throw new Error(`${result.status} ${result.statusText}`);
         }
+        numAdded = semesters.length + events.length + years.length;
+        window.location = 'confirm.html?type=2&number=' + numAdded;
 
     } catch(err) {
         console.log("Big error");
