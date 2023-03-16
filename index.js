@@ -45,6 +45,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use('/maintenance(.html)?',verifyjwt);
 app.use('/delete(.html)?', verifyjwt);
 app.use('/confirm(.html)?', verifyjwt);
+app.use('/edit(.html)?', verifyjwt);
+app.use('/add(.html)?', verifyjwt);
 
 //app.use('/', require('./routes/login'));
 app.use('/', require('./routes/root'));
