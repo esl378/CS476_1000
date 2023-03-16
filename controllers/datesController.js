@@ -67,12 +67,7 @@ const handlePutYear = async(req, res) => {
 
     const semesters = requestReceiver.semesters;
     const events = requestReceiver.events;
-
-    console.log("The semesters are: ");
-    console.log(semesters);
-    console.log("\n\n");
     
-
     try{
         if(semesters) {
             for(let i = 0; i < semesters.length; i++) {
