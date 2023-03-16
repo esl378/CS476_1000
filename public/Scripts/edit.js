@@ -5,13 +5,13 @@
 
 //Created a class to get the semesters into a nice easy to use object
 class Semester {
-    constructor(name,heldIn,strtDate,endDate,year) {
-        console.log(strtDate);
+    constructor(name="",heldIn="",strtDate="",endDate="",year="", id="") {
         this.name = name;
         this.strtDate = strtDate;
         this.endDate = endDate;
         this.year = year;
         this.heldIn = heldIn;
+        this.id = id;
     }
     print() {
         console.log("Name: " + this.name);
@@ -19,11 +19,18 @@ class Semester {
         console.log("End date: " + this.endDate);
         console.log("Year: " + this.year);
     }
+    hasValues() {
+        if(this.name !== "" || this.heldIn !== "" || this.strtDate !== "" || this.endDate !== "" || this.year !== "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 };
 
 //Created a class to get the Events into a nice easy to use object
 class Event {
-    constructor(strtDate, endDate, semester="invalid", year, description, id) {
+    constructor(strtDate="", endDate="", semester="", year="", description="", id="") {
         this.strtDate = strtDate;
         this.endDate = endDate;
         this.semester = semester;
@@ -37,6 +44,13 @@ class Event {
         console.log("End date: " + this.endDate);
         console.log("Year: " + this.year);
         console.log("Semester: " + this.semester);
+    }
+    hasValues() {
+        if(this.strtDate !== "" || this.endDate !== "" || this.semester !== "" || this.year !== "" || this.description !== "") {
+            return true;
+        } else {
+            return false;
+        }
     }
 };
 
@@ -139,6 +153,7 @@ function hideDates() {
 //
 
 //Adds a new semester object to the form
+//name="",heldIn="",strtDate="",endDate="",year="", id=""
 function createSemesterObject(description, strtDate, endDate, year, heldIn) {
 
     //Get the semesters div
@@ -147,7 +162,7 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn) {
 
     //Create outer div
     var div = document.createElement("div");
-    div.className = "semester";
+    div.className = "semesterObj";
 
     //Title
     var name = document.createElement("h3");
@@ -240,7 +255,7 @@ function createDateObject(description, strtDate, endDate, year, semester) {
     
 //Create the outer div
     var div = document.createElement("div");
-    div.className = "date";
+    div.className = "dateObj";
 
     //Title
     var name = document.createElement("h3");
@@ -567,4 +582,194 @@ function destroyEvents() {
 function addingSemesters() {
     displaySemesters(getSelectedYear());
     displayEvents(getSelectedYear());
+}
+
+function getAllEvents(globalEvent) {
+    let dates = document.getElementsByClassName("dateObj");
+    for(const dateObj of dates) {
+        var event = new Event;
+        
+        //This will add the values to an event object and then add it to events array
+        //Note that there is a p element around the input so I have to add the childNodes[1]
+        //Get the description
+        event.description = dateObj.children[1].childNodes[1].value;
+        //Get the start date
+        event.strtDate = dateObj.children[2].childNodes[1].value;
+        //Get the end date
+        event.endDate = dateObj.children[3].childNodes[1].value;
+        //Get the year date
+        event.year = dateObj.children[4].childNodes[1].value;
+        //Get the semester date
+        event.semester = dateObj.children[5].childNodes[1].value;
+
+        //Push the values to array
+        globalEvent.push(event);
+    }
+}
+
+function getAllSemesters(globalSem) {
+    let semstrs = document.getElementsByClassName("semesterObj");
+
+    for(const semesterObj of semstrs) {
+        var semester = new Semester;
+        //This will add the values to an event object and then add it to events array
+        //Note that there is a p element around the input so I have to add the childNodes[1]
+        //Get the description
+        semester.name = semesterObj.children[1].childNodes[1].value;
+        //Get the start date
+        semester.strtDate = semesterObj.children[2].childNodes[1].value;
+        //Get the end date
+        semester.endDate = semesterObj.children[3].childNodes[1].value;
+        //Get the year
+        semester.year = semesterObj.children[4].childNodes[1].value;
+        //Get the heldIn
+        semester.heldIn = semesterObj.children[5].childNodes[1].value;
+
+        //Push values to array
+        globalSem.push(semester);
+    }
+}
+
+function getAllYears() {
+    let yrs = document.getElementById("year");
+
+    let yers = new Year;
+
+    yers.year = yrs.value;
+    years.push(yers);
+}
+
+function createDTO() {
+
+    getAllYears();
+    let dto = new DTO(semesters,events,years);
+
+    for(let i = 0; i < dto.events.length; i++) {
+        for(let j = 0; j < dto.semesters.length; j++) {
+            if(dto.events[i].strtDate >= dto.semesters[j].start_date) {
+                dto.events[i].semester = dto.semesters[j].name;
+                break;
+            }
+        }
+    }
+    return JSON.stringify(dto);
+
+}
+
+async function kiddyFunky() {
+    
+    let semestersMaybeUpdate = new Array;
+    let eventsMaybeUpdate = new Array;
+
+    let semestersToUpdate = new Array;
+    let eventsToUpdate = new Array;
+
+    getAllSemesters(semestersMaybeUpdate);
+    getAllEvents(eventsMaybeUpdate);
+
+    console.log(semestersMaybeUpdate);
+
+    for(let i = 0; i < semestersMaybeUpdate.length; i++) {
+        if(semestersMaybeUpdate[i].hasValues()) {
+            let tmpSem = new Semester;
+            if(semestersMaybeUpdate[i].name !== "") {
+                tmpSem.name = semestersMaybeUpdate[i].name;
+            } else {
+                const name = 'name';
+                delete tmpSem[name];
+            }
+            if(semestersMaybeUpdate[i].strtDate !== "") {
+                tmpSem.strtDate = semestersMaybeUpdate[i].strtDate;
+            } else {
+                const name = 'strtDate';
+                delete tmpSem[name];
+            }
+            if(semestersMaybeUpdate[i].endDate !== "") {
+                tmpSem.endDate = semestersMaybeUpdate[i].endDate;
+            } else {
+                const name = 'endDate';
+                delete tmpSem[name];
+            }
+            if(semestersMaybeUpdate[i].year !== "") {
+                tmpSem.year= semestersMaybeUpdate[i].year;
+            } else {
+                const name = 'year';
+                delete tmpSem[name];
+            }
+            if(semestersMaybeUpdate[i].heldIn !== "") {
+                tmpSem.heldIn = semestersMaybeUpdate[i].heldIn;
+            } else {
+                const name = 'heldIn';
+                delete tmpSem[name];
+            }
+            tmpSem.id = semesters[i].id;
+            semestersToUpdate.push(tmpSem);
+        }
+    }
+
+    for(let i = 0; i < eventsMaybeUpdate.length; i++) {
+        if(eventsMaybeUpdate[i].hasValues()) {
+            var tmpEvent = new Event;
+            if(eventsMaybeUpdate[i].description !=="") {
+                tmpEvent.description = eventsMaybeUpdate[i].description;
+            } else {
+                const name = 'description';
+                delete tmpEvent[name];
+            }
+            if(eventsMaybeUpdate[i].strtDate !=="") {
+                tmpEvent.strtDate = eventsMaybeUpdate[i].strtDate;
+            } else {
+                const name = 'strtDate';
+                delete tmpEvent[name];
+            }
+            if(eventsMaybeUpdate[i].endDate !=="") {
+                tmpEvent.endDate = eventsMaybeUpdate[i].endDate;
+            } else {
+                const name = 'endDate';
+                delete tmpEvent[name];
+            }
+            if(eventsMaybeUpdate[i].year !=="") {
+                tmpEvent.year = eventsMaybeUpdate[i].year;
+            } else {
+                const name = 'year';
+                delete tmpEvent[name];
+            }
+            if(eventsMaybeUpdate[i].semester !=="") {
+                tmpEvent.semester = eventsMaybeUpdate[i].semester;
+            } else {
+                const name = 'semester';
+                delete tmpEvent[name];
+            }
+            tmpEvent.id = events[i].id;
+            eventsToUpdate.push(tmpEvent);
+        }
+    }
+
+    const packetBody = JSON.stringify({
+        "semesters": semestersToUpdate,
+        "events": eventsToUpdate
+    });
+
+    console.log(packetBody);
+
+    try{
+        const result = await fetch('http://localhost:4111/putYear', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: packetBody
+        });
+
+        if(!result.ok) {
+            if(result.status == 401) {
+                return await sendRefreshToken();
+            }
+            throw new Error(`${result.status} ${result.statusText}`);
+        }
+
+    } catch(err) {
+        console.log("Big error");
+    }
 }

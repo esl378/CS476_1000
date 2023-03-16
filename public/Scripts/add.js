@@ -327,7 +327,6 @@ function createDTO() {
 
 async function daddyFunky() {
     const dto = createDTO();
-    console.log(dto);
     try{
         const result = await fetch('http://localhost:4111/add', {
             method:'POST',

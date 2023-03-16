@@ -28,7 +28,6 @@ const handleGetEvents = async (req, res) => {
     const event = await Event.find().exec();
     
     try{
-        console.log(event);
         res.json(event);
     } catch(err){
         res.status(500).json({'message': err.message});
@@ -41,7 +40,6 @@ const handleGetYears = async (req, res) => {
     const event = await Year.find().exec();
     
     try{
-        console.log(event);
         res.json(event);
     } catch(err){
         res.status(500).json({'message': err.message});
@@ -54,7 +52,6 @@ const handleGetSemesters = async (req, res) => {
     const event = await Semester.find().exec();
     
     try{
-        console.log(event);
         res.json(event);
     } catch(err){
         res.status(500).json({'message': err.message});
@@ -100,7 +97,7 @@ const handlePutYear = async(req, res) => {
                     }
                 );
             }
-        }
+        } 
 
         res.status(201).json({'success': `Success`});
     } catch(err){
