@@ -54,11 +54,9 @@ app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
 app.use('/mRoute', require('./routes/monthRoute'));
 app.use('/sRoute', require('./routes/semesterRoute'));
-app.use('/add', require('./routes/add'));
 app.use('/getEvents', require('./routes/getEvents'));
 app.use('/getYears', require('./routes/getYears'));
 app.use('/getSemesters', require('./routes/getSemesters'));
-app.use('/putYear', require('./routes/putYear'));
 app.use('/semp', require("./routes/semPop")); 
 
 
@@ -67,6 +65,8 @@ app.use('/semp', require("./routes/semPop"));
 app.use(verifyjwt);
 app.use('/del', require("./routes/del")); //used to test that the verification works
 app.use('/delp', require("./routes/populate")); //used to test that the verification works
+app.use('/add', require('./routes/add'));
+app.use('/putYear', require('./routes/putYear'));
 //I commented out this code just in case it messes with the page retrievals
 //The web server should now serve our html pages
 //app.set('view engine', 'ejs');
