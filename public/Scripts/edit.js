@@ -178,6 +178,7 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn, id) 
     input.className = "sem";
     input.name = "name";
     input.id = "sem";
+    input.addEventListener("blur", validateName);
     //Add input to p
     name.appendChild(input);
     //Add name to div
@@ -220,7 +221,8 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn, id) 
     input.type = "text";
     input.className = "year";
     input.name = "year";
-    input.id = "tear";
+    input.id = "year";
+    input.addEventListener("blur", validateYear);
     //Add input to p
     name.appendChild(input);
     //Add name to div
@@ -780,4 +782,37 @@ async function kiddyFunky() {
     } catch(err) {
         console.log("Big error");
     }
+}
+
+function validateName() {
+    const pattern = /^[a-zA-Z]+[_]\d{4}$/;
+    //If it doesn't match the pattern, it adds a hint to match the pattern
+    //If it does then delete the hint
+    if(this.parentNode.childNodes.length > 2) {
+        this.parentNode.removeChild(this.parentNode.lastChild);
+    }
+    if(!pattern.test(this.value)) {
+        var node = document.createElement("p");
+        node.className="hint";
+        node.innerHTML="This needs to be in the form \'Semester Name\'_\'Year in the form yyyy\'";
+        this.parentNode.appendChild(node);  
+        return false;
+    } 
+    return true;
+}
+
+function validateYear() {
+    const pattern = /^\d{4}[-]\d{4}$/;
+
+    if(this.parentNode.childNodes.length > 2) {
+        this.parentNode.removeChild(this.parentNode.lastChild);
+    }
+    if(!pattern.test(this.value)) {
+        var node = document.createElement("p");
+        node.className="hint";
+        node.innerHTML="This needs to be in the form \'Year in the form yyyy\'-\'Year in the form yyyy\'";
+        this.parentNode.appendChild(node);  
+        return false;
+    }
+    return true;
 }
