@@ -178,6 +178,21 @@ function createSemesterObject() {
     //Add name to div
     div.appendChild(name);
 
+    //year
+    //Title
+    var name = document.createElement("p");
+    name.innerHTML = "Held In";
+    //Input
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "heldIn";
+    input.name = "heldIn";
+    input.id = "heldIn";
+    //Add input to p
+    name.appendChild(input);
+    //Add name to div
+    div.appendChild(name);
+
 
     //add div to semesters div
     semesters.appendChild(div);
@@ -246,6 +261,21 @@ function createDateObject() {
     //Add name to div
     div.appendChild(name);
 
+    //Description
+    //Title
+    var name = document.createElement("p");
+    name.innerHTML = "Semester";
+    //Input
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "sm";
+    input.name = "sm";
+    input.id = "sm";
+    //Add input to p
+    name.appendChild(input);
+    //Add name to div
+    div.appendChild(name);
+
     //Append the div to the form
     dates.appendChild(div);
 }
@@ -263,6 +293,8 @@ function getAllEvents(yr) {
         event.strtDate = dateObj.children[2].childNodes[1].value;
         //Get the end date
         event.endDate = dateObj.children[3].childNodes[1].value;
+        //Get the end date
+        event.semester = dateObj.children[4].childNodes[1].value;
 
         event.year = yr;
 
@@ -284,6 +316,8 @@ function getAllSemesters(yr) {
         semester.strtDate = semesterObj.children[2].childNodes[1].value;
         //Get the end date
         semester.endDate = semesterObj.children[3].childNodes[1].value;
+        //Get the end date
+        semester.heldIn = semesterObj.children[4].childNodes[1].value;
 
         semester.year = yr;
 
