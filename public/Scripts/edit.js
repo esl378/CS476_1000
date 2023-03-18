@@ -154,7 +154,7 @@ function hideDates() {
 
 //Adds a new semester object to the form
 //name="",heldIn="",strtDate="",endDate="",year="", id=""
-function createSemesterObject(description, strtDate, endDate, year, heldIn) {
+function createSemesterObject(description, strtDate, endDate, year, heldIn, id) {
 
     //Get the semesters div
     var semesters = document.getElementById("semesters");
@@ -178,6 +178,7 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn) {
     input.className = "sem";
     input.name = "name";
     input.id = "sem";
+    input.addEventListener("blur", validateName);
     //Add input to p
     name.appendChild(input);
     //Add name to div
@@ -220,7 +221,8 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn) {
     input.type = "text";
     input.className = "year";
     input.name = "year";
-    input.id = "tear";
+    input.id = "year";
+    input.addEventListener("blur", validateYear);
     //Add input to p
     name.appendChild(input);
     //Add name to div
@@ -240,6 +242,12 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn) {
     //Add name to div
     div.appendChild(name);
 
+    //Semester id
+    var name = document.createElement("p");
+    name.innerHTML = id;
+    name.style.display = "none";
+
+    div.appendChild(name);
 
     //add div to semesters div
     semesters.appendChild(div);
@@ -247,7 +255,7 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn) {
 }
 
 //Adds a new date object
-function createDateObject(description, strtDate, endDate, year, semester) {
+function createDateObject(description, strtDate, endDate, year, semester, id) {
 
 //Get the form to add a new object
     var dates = document.getElementById("dates");
@@ -307,9 +315,6 @@ function createDateObject(description, strtDate, endDate, year, semester) {
     //Add name to div
     div.appendChild(name);
 
-    //Append the div to the form
-    dates.appendChild(div);
-
     //Year
     name = document.createElement("p");
     name.innerHTML = "Year: " + year + " change to ";
@@ -323,9 +328,6 @@ function createDateObject(description, strtDate, endDate, year, semester) {
     name.appendChild(input);
     //Add name to div
     div.appendChild(name);
-
-    //Append the div to the form
-    dates.appendChild(div);
 
     //Semester
     name = document.createElement("p");
@@ -341,8 +343,11 @@ function createDateObject(description, strtDate, endDate, year, semester) {
     //Add name to div
     div.appendChild(name);
 
-    //Append the div to the form
-    dates.appendChild(div);
+    //Date id
+    name = document.createElement("p");
+    name.innerHTML = id;
+    name.style.display = "none";
+    div.appendChild(name);
 
     //Append the div to the form
     dates.appendChild(div);
@@ -528,7 +533,8 @@ function displaySemesters(year) {
                 semesters[i].strtDate, 
                 semesters[i].endDate, 
                 semesters[i].year, 
-                semesters[i].heldIn
+                semesters[i].heldIn,
+                semesters[i].id
                 );
         }
     }
@@ -551,7 +557,8 @@ function displayEvents(year) {
                 events[i].strtDate, 
                 events[i].endDate, 
                 events[i].year, 
-                events[i].semester);
+                events[i].semester,
+                events[i].id);
         }
     }
 }
@@ -601,6 +608,8 @@ function getAllEvents(globalEvent) {
         event.year = dateObj.children[4].childNodes[1].value;
         //Get the semester date
         event.semester = dateObj.children[5].childNodes[1].value;
+        //Get the ID
+        event.id = dateObj.children[6].innerHTML;
 
         //Push the values to array
         globalEvent.push(event);
@@ -624,6 +633,8 @@ function getAllSemesters(globalSem) {
         semester.year = semesterObj.children[4].childNodes[1].value;
         //Get the heldIn
         semester.heldIn = semesterObj.children[5].childNodes[1].value;
+        //Get the id
+        semester.id = semesterObj.children[6].innerHTML;
 
         //Push values to array
         globalSem.push(semester);
@@ -667,8 +678,6 @@ async function kiddyFunky() {
     getAllSemesters(semestersMaybeUpdate);
     getAllEvents(eventsMaybeUpdate);
 
-    console.log(semestersMaybeUpdate);
-
     for(let i = 0; i < semestersMaybeUpdate.length; i++) {
         if(semestersMaybeUpdate[i].hasValues()) {
             let tmpSem = new Semester;
@@ -702,7 +711,7 @@ async function kiddyFunky() {
                 const name = 'heldIn';
                 delete tmpSem[name];
             }
-            tmpSem.id = semesters[i].id;
+            tmpSem.id = semestersMaybeUpdate[i].id;
             semestersToUpdate.push(tmpSem);
         }
     }
@@ -740,7 +749,7 @@ async function kiddyFunky() {
                 const name = 'semester';
                 delete tmpEvent[name];
             }
-            tmpEvent.id = events[i].id;
+            tmpEvent.id = eventsMaybeUpdate[i].id;
             eventsToUpdate.push(tmpEvent);
         }
     }
@@ -749,8 +758,6 @@ async function kiddyFunky() {
         "semesters": semestersToUpdate,
         "events": eventsToUpdate
     });
-
-    console.log(packetBody);
 
     try{
         const result = await fetch('http://localhost:4111/putYear', {
@@ -769,7 +776,43 @@ async function kiddyFunky() {
             throw new Error(`${result.status} ${result.statusText}`);
         }
 
+        numAdded = semestersToUpdate.length + eventsToUpdate.length;
+        window.location = 'confirm.html?type=1&number=' + numAdded;
+
     } catch(err) {
         console.log("Big error");
     }
+}
+
+function validateName() {
+    const pattern = /^[a-zA-Z]+[_]\d{4}$/;
+    //If it doesn't match the pattern, it adds a hint to match the pattern
+    //If it does then delete the hint
+    if(this.parentNode.childNodes.length > 2) {
+        this.parentNode.removeChild(this.parentNode.lastChild);
+    }
+    if(!pattern.test(this.value)) {
+        var node = document.createElement("p");
+        node.className="hint";
+        node.innerHTML="This needs to be in the form \'Semester Name\'_\'Year in the form yyyy\'";
+        this.parentNode.appendChild(node);  
+        return false;
+    } 
+    return true;
+}
+
+function validateYear() {
+    const pattern = /^\d{4}[-]\d{4}$/;
+
+    if(this.parentNode.childNodes.length > 2) {
+        this.parentNode.removeChild(this.parentNode.lastChild);
+    }
+    if(!pattern.test(this.value)) {
+        var node = document.createElement("p");
+        node.className="hint";
+        node.innerHTML="This needs to be in the form \'Year in the form yyyy\'-\'Year in the form yyyy\'";
+        this.parentNode.appendChild(node);  
+        return false;
+    }
+    return true;
 }
