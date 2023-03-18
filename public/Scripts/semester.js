@@ -172,7 +172,7 @@ async function displayEvents(year, semester){
             let regTerm = /term/i;
             console.log(events);
             for(let i = 0; i < events.length; i++){
-                let location = events[i].description.match(regTerm));
+                let location = events[i].description.match(regTerm);
             }
             
 

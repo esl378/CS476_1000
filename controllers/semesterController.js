@@ -6,6 +6,7 @@ const handleGetSem = async (req, res) => {
     const infoReceiver = req.body;
 
     const semList = infoReceiver.semesters;
+    console.log(semList);
     const yrList = infoReceiver.years;
     const evtList = infoReceiver.events;
 

@@ -26,7 +26,7 @@
                 <form id="yr" name = "yearSel">
                     <label for="Year">Academic Year: </label>
                     <select name="Year" id="yearVals">
-                        <option value="" select="disabled hidden">Select Academic Year</option>
+                        <option value="">Select Academic Year</option>
                     </select>
                 </form>
             </div>
@@ -42,8 +42,8 @@
                 <input type="submit" value="Month View" class="">
             </form>
             <div class="info" role="main">
-                <h1 role="heading">Winter 2023</h1>
-                <details class="infoAccordian" role="directory">
+                <h1 role="heading" id="termName"></h1>
+                <details class="infoAccordian" id="termInfo" role="directory">
                     <summary role="doc-subtitle">Term Information</summary>
                     <div class="step1">
                         <span class="bold">Held in:</span> January - April<br/>
@@ -88,7 +88,7 @@
                         </details>
                     </div>
                 </details>
-                <details class="infoAccordian">
+                <details class="infoAccordian" id="otherInfo">
                     <summary>Other Important Dates and Deadlines</summary>
                     <div class="step1">
                         <p style="margin: 5px"> </p>
@@ -127,4 +127,5 @@
     </body>
     <script type = "text/javascript"  src = "/Scripts/general.js" ></script>
     <script type = "text/javascript"  src = "/Scripts/semester.js" ></script>
+    <script type = "text/javascript"  src = "/Scripts/displayEL.js" ></script>
 </html>
