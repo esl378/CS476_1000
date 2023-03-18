@@ -66,7 +66,7 @@ app.use('/semp', require("./routes/semPop"));
 
 app.use(verifyjwt);
 app.use('/del', require("./routes/del")); //used to test that the verification works
-app.use('/delp', require("./routes/populate")); //used to test that the verification works
+app.use('/delp', require("./routes/getYears")); //used to test that the verification works
 app.use('/add', require('./routes/add'));
 app.use('/putYear', require('./routes/putYear'));
 //I commented out this code just in case it messes with the page retrievals
