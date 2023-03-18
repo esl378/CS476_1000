@@ -30,7 +30,7 @@ async function main(yearForm, semForm) {
         console.log(err.stack);
     }
 }
-
+// Populate the dropdown menus
 async function semPopulate() {
     try{
         const res = await fetch('http://localhost:4111/semp', {
@@ -43,6 +43,7 @@ async function semPopulate() {
         var yearSelect = document.getElementById("yearVals");
         var semSelect = document.getElementById("semVals");
 
+        // Populate the dropdown menus
         for(let i = 0; i < response.yrResult.length; i++){
             var option = document.createElement("option");
             option.value = response.yrResult[i].year;
@@ -55,7 +56,10 @@ async function semPopulate() {
             var option = document.createElement("option");
             option.value = response.semResult[i].name;
             option.name = "semester";
-            option.innerHTML = response.semResult[i].name;
+            const firstLetter = response.semResult[i].name.charAt(0).toUpperCase();
+            const end = response.semResult[i].name.indexOf('_');
+            const remaining = response.semResult[i].name.substring(1,end);
+            option.innerHTML = firstLetter + remaining;
             semSelect.appendChild(option);
         }
         
@@ -70,4 +74,5 @@ async function semPopulate() {
         console.log(err.stack);
     }
 }
+
 window.onload = semPopulate;
