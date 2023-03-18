@@ -16,7 +16,7 @@ const handleLogin = async (req, res) => {
         const accessToken = jwt.sign(
             {"username": foundUser.uid}, 
             process.env.ACCESS_TOKEN_SECRET, 
-            { expiresIn: '1d' }
+            { expiresIn: '1hr' }
         );
         const refreshToken = jwt.sign(
             {"username": foundUser.uid}, 
@@ -28,7 +28,7 @@ const handleLogin = async (req, res) => {
         const result = await foundUser.save();
         console.log(result);
 
-        res.cookie('jwt', refreshToken, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true }); //MUST ADD BEFORE DEPLOYMENT: secure: true , { httpOnly: true, maxAge: 24 * 60 * 60 * 1000}
+        res.cookie('jwt', refreshToken, { maxAge: 60 * 60 * 1000, httpOnly: true }); //MUST ADD BEFORE DEPLOYMENT: secure: true , { httpOnly: true, maxAge: 24 * 60 * 60 * 1000}
         res.cookie('jwt_access', accessToken, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true });
         
         res.redirect('/maintenance');
