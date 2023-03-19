@@ -1,3 +1,4 @@
+/* checks that the request is coming from an allowed source that is trusted*/
 const allowedOrigins = require('../config/allowedOrigins');
 
 const credentials = (req, res, next) => {

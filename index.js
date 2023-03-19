@@ -4,14 +4,12 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const verifyjwt = require('./middleware/verifyJWT');
-const authCheck = require('./middleware/authCheck');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
 const corsOptions = require('./config/corsOptions');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbConn');
 const app = express();
-const router = express.Router();
 const PORT = process.env.PORT || 4111;
 
 //connect to MongoDB
@@ -22,8 +20,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 //Handle options credentials check
-//also fetch cookies credentials requirement
-app.use(credentials);
+//app.use(credentials);
 
 //cross origin resource sharing
 app.use(cors(corsOptions));

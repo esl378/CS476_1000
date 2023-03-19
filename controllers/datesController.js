@@ -2,6 +2,7 @@ const Event = require('../models/Event');
 const Semester = require('../models/Semester');
 const Year = require('../models/Year');
 
+//Handles adding calendar years to the database
 const handleAddYear = async (req, res) => {
 
     const requestReceiver = req.body;
@@ -25,6 +26,7 @@ const handleAddYear = async (req, res) => {
     }
 }
 
+//Handles retrieving events from the database
 const handleGetEvents = async (req, res) => {
     const { description, strtDate, endDate, year, semester } = req.body;
     
@@ -37,6 +39,7 @@ const handleGetEvents = async (req, res) => {
     }
 }
 
+//Handles retrieving years from the database
 const handleGetYears = async (req, res) => {
     const { year } = req.body;
     
@@ -49,6 +52,7 @@ const handleGetYears = async (req, res) => {
     }
 }
 
+//Handles retrieving semesters from the database
 const handleGetSemesters = async (req, res) => {
     const { name, strtDate, endDate, year, heldIn } = req.body;
     
@@ -61,6 +65,7 @@ const handleGetSemesters = async (req, res) => {
     }
 }
 
+//handles editting calendar years that are already in the database
 const handlePutYear = async(req, res) => {
 
     const requestReceiver = req.body;
@@ -110,18 +115,18 @@ const handlePutYear = async(req, res) => {
     }
 }
 
+//Handles deleting calendars from the database
 const handleDelete = async (req, res) => {
     const delYear = req.body;
     const val = delYear.year;
     
     try{
+        //find all database entries that match the selection criteria
         const result1 = await Event.deleteMany({year: val}).exec();
         const result2 = await Semester.deleteMany({year: val}).exec();
         const result3 = await Year.deleteMany({year: val}).exec();
         
-        console.log(result1);
-        console.log(result2);
-        console.log(result3);
+        //obtain the number of items deleted and send it client side for confirmation message
         var deled = result1.deletedCount + result2.deletedCount + result3.deletedCount;
         res.json({"deleted": deled});
             
@@ -130,6 +135,7 @@ const handleDelete = async (req, res) => {
     }
 }
 
+//Handles retrieving semester data for the main view page from the database
 const handleGetSem = async (req, res) => {
     const infoReceiver = req.body;
     const semList = infoReceiver.semesters;

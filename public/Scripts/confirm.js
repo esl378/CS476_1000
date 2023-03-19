@@ -54,7 +54,7 @@ function display(){
 }
 
 function goodbye(){
-    console.log("balls");
+   
     location.href = 'http://localhost:4111/maintenance';
 }
 window.onload = display;

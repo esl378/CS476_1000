@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Academic Schedule</title>
+        <title>Academic Schedule - Semester View</title>
+        <link rel="stylesheet" type="text/css" href="/CSS/overall.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/semesterCSS.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/monthCSS.css"/>
+        <meta http-equiv="refresh" content="3600">
+    </head>
+    <header class="banner" role="banner">
+        <div class="bannerLeft">
+            <img src="/Images/UR_Logo_Primary_Reverse_White.png" alt="UofR logo" role="img"/>
+        </div>
+        <div class="bannerMiddle">
+            2022-2023 Academic Schedule<br/>
+            <span class="subtitle">Full Semester View</span>
+        </div>
+        <div class="bannerRight">
+            <p id="date"><!-- <script >getD()</script> -->
+            </p>
+        </div>
+    </header>
+</br>
+    <body class="mainContainer">
+        <div class="middle" role="contentinfo">
+            <div class="midLeft">
+                <form id="yr" name = "yearSel">
+                    <label for="Year">Academic Year: </label>
+                    <select name="Year" id="yearVals">
+                        <option value="">Select Academic Year</option>
+                    </select>
+                </form>
+            </div>
+            <div class="midCenter">
+                <form id="sem" name = "semSel">
+                    <label for="semester">Semester</label>
+                    <select name="semester" id="semVals">
+                        <option value="">Select a Semester</option>
+                    </select>
+                </form>
+            </div>
+            <form id="mthBtn" action="" class="midRight event"><!-- action="./monthView.html" -->
+                <input type="submit" value="Month View">
+                <span class="eventText" id="eventPopup">
+                    Feature Coming Soon!
+                </span>
+            </form>
+            <div class="info hidable" role="main" id="eventally">
+                <h1 role="heading" id="termName"></h1>
+                <details class="infoAccordian" id="termInfo" role="directory">
+                    <summary role="doc-subtitle">Term Information</summary>
+                    <div class="step1">
+                        <p id="heldin"></p>
+                        <p id="termStart"></p>
+                        <p id="termEnd"></p>
+                        <p style="margin: 5px"> </p>
+                        <details class="step2">
+                            <summary>Class Dates</summary>
+                            <div class="step1">
+                                <p id="strtClass"></p>
+                                <p id="endClass"></p>
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Examination Dates</summary>
+                            <div class="step1">
+                                <p id="examStrt"></p> 
+                                <p id="examEnd"></p>
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Tuition and Fee Payment Dates</summary>
+                            <div class="step1"> 
+                                <p id="dueDate"></p>
+                                <p id="pfpmt"></p>
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Class Add/Drop Dates</summary>
+                            <div class="step1"> 
+                                <p id="addEnd"></p>
+                                <p id="nrDrop"></p>
+                                <p id="gwDrop"></p>
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Tuition and Fee Refund Dates</summary>
+                            <div class="step1">
+                                <p id="fullRef"></p>
+                                <p id="halfRef"></p>
+                            </div>
+                        </details>
+                    </div>
+                </details>
+                <details class="infoAccordian" id="otherInfo">
+                    <summary>Other Important Dates and Deadlines</summary>
+                    <div class="step1">
+                        <p style="margin: 5px"> </p>
+                        <details class="step2">
+                            <summary>Reading Week</summary>
+                            <div class="step1">
+                                <p id="readStrt"></p>
+                                <p id="readEnd"></p>
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Stat Holidays - No Classes <span class="seventyfive">(Most University Offices Closed)</span></summary>
+                            <div class="step1" id="statHoli">
+                            </div>
+                        </details>
+                        <details class="step2">
+                            <summary>Other</summary>
+                            <div class="step1" id="otherHoli">
+                                <p id="other"></p>
+                            </div>
+                        </details>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <footer class="bottom">
+            <a href="https://banner.uregina.ca" class="bottomLeft">UR Self-Service</a>
+            <a href="./login.html" class="bottomRight">Admin Login</a>
+        </footer>
+    </body>
+    <script type = "text/javascript"  src = "/Scripts/general.js" ></script>
+    <script type = "text/javascript"  src = "/Scripts/semester.js" ></script>
+    <script type = "text/javascript"  src = "/Scripts/displayEL.js" ></script>
+</html>

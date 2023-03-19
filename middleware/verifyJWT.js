@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 
-
+//Used to block unauthorized access of protected pages
+//Checks that whoever is trying to access the page/route 
+//has a valid web token which means they are logged in as an admin
 const verifyJWT = (req, res, next) => {
     const cookies = req.cookies;
     if(!cookies?.jwt_access) return res.redirect('/login');

@@ -1,10 +1,11 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
-
+//if access token is expired renew it 
 const handleRefreshToken = async (req, res) => {
+    //obtain cookie header from request message
     const cookies = req.cookies;
-    if(!cookies?.jwt) return res.sendStatus(401);
+    if(!cookies?.jwt) return res.sendStatus(401); //not logged in do nothing
     
     const refreshToken = cookies.jwt;
 
