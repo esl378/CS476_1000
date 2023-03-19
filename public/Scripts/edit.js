@@ -670,6 +670,10 @@ function createDTO() {
 }
 
 async function kiddyFunky() {
+    if(!validateName() || !validateYear()) {
+        document.getElementById("msg").innerHTML = "Please fix the data before submitting";
+        return;
+    }
     
     let semestersMaybeUpdate = new Array;
     let eventsMaybeUpdate = new Array;
