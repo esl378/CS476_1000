@@ -155,7 +155,8 @@ function hideDates() {
 //Adds a new semester object to the form
 //name="",heldIn="",strtDate="",endDate="",year="", id=""
 function createSemesterObject(description, strtDate, endDate, year, heldIn, id) {
-
+    strtDate = getDate(strtDate);
+    endDate = getDate(endDate);
     //Get the semesters div
     var semesters = document.getElementById("semesters");
     var num = semesters.childNodes.length + 1;
@@ -256,7 +257,8 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn, id) 
 
 //Adds a new date object
 function createDateObject(description, strtDate, endDate, year, semester, id) {
-
+    strtDate = getDate(strtDate);
+    endDate = getDate(endDate);
 //Get the form to add a new object
     var dates = document.getElementById("dates");
     var num = dates.childNodes.length + 1;
@@ -669,6 +671,11 @@ function createDTO() {
 
 async function kiddyFunky() {
     
+    if(validateAllNames(dto) && validateAllYears(dto)) {
+        document.getElementById("msg").innerHTML = "Please fix the data before submitting";
+        return;
+    }
+    
     let semestersMaybeUpdate = new Array;
     let eventsMaybeUpdate = new Array;
 
@@ -801,6 +808,27 @@ function validateName() {
     return true;
 }
 
+function validateAllNames(dto) {
+    if(dto.semesters == undefined) {
+        return true;
+    }
+    for(let i = 0; i < dto.semesters.length; i++) {
+        if(!validateNameInd(dto.semesters[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function validateNameInd(name) {
+    const pattern = /^[a-zA-Z]+[_]\d{4}$/;
+    if(!pattern.test(name)) {
+        return false;
+    } 
+    return true;
+}
+
+
 function validateYear() {
     const pattern = /^\d{4}[-]\d{4}$/;
 
@@ -813,6 +841,28 @@ function validateYear() {
         node.innerHTML="This needs to be in the form \'Year in the form yyyy\'-\'Year in the form yyyy\'";
         this.parentNode.appendChild(node);  
         return false;
+    }
+    return true;
+}
+
+function validateYearInd(year) {
+    const pattern = /^\d{4}[-]\d{4}$/;
+    if(!pattern.test(year)) {
+        return false;
+    }
+    return true;
+}
+
+function validateAllYears(dto) {
+
+    if(dto.semesters == undefined) {
+        return true;
+    }
+
+    for(let i = 0; i < dto.semesters.length; i++) {
+        if(!validateYear(dto.semesters[i].heldIn)) {
+            return false;
+        }
     }
     return true;
 }

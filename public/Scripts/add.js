@@ -365,6 +365,11 @@ function createDTO() {
 
 async function daddyFunky() {
     const dto = createDTO();
+
+    if(validateAllNames(dto) && validateAllYears(dto)) {
+        document.getElementById("msg").innerHTML = "Please fix the data before submitting";
+        return;
+    }
     try{
         const result = await fetch('http://localhost:4111/add', {
             method:'POST',
@@ -406,6 +411,27 @@ function validateName() {
     return true;
 }
 
+function validateAllNames(dto) {
+    if(dto.semesters == undefined) {
+        return true;
+    }
+    for(let i = 0; i < dto.semesters.length; i++) {
+        if(!validateNameInd(dto.semesters[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function validateNameInd(name) {
+    const pattern = /^[a-zA-Z]+[_]\d{4}$/;
+    if(!pattern.test(name)) {
+        return false;
+    } 
+    return true;
+}
+
+
 function validateYear() {
     const pattern = /^\d{4}[-]\d{4}$/;
 
@@ -418,6 +444,28 @@ function validateYear() {
         node.innerHTML="This needs to be in the form \'Year in the form yyyy\'-\'Year in the form yyyy\'";
         this.parentNode.appendChild(node);  
         return false;
+    }
+    return true;
+}
+
+function validateYearInd(year) {
+    const pattern = /^\d{4}[-]\d{4}$/;
+    if(!pattern.test(year)) {
+        return false;
+    }
+    return true;
+}
+
+function validateAllYears(dto) {
+
+    if(dto.semesters == undefined) {
+        return true;
+    }
+
+    for(let i = 0; i < dto.semesters.length; i++) {
+        if(!validateYear(dto.semesters[i].heldIn)) {
+            return false;
+        }
     }
     return true;
 }

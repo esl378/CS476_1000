@@ -21,7 +21,7 @@ router.get('/fileName(.html)?', (req, res) => {
 //Serve a page, lacking images and other files
 //semesterView page and will be treated as index page
 router.get('^/$|index(.html)?|semesterView(.html)', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'semesterView.html'));
+    res.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
 });
 
 //monthView page
