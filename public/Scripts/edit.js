@@ -670,12 +670,7 @@ function createDTO() {
 }
 
 async function kiddyFunky() {
-    
-    if(validateAllNames(dto) && validateAllYears(dto)) {
-        document.getElementById("msg").innerHTML = "Please fix the data before submitting";
-        return;
-    }
-    
+
     let semestersMaybeUpdate = new Array;
     let eventsMaybeUpdate = new Array;
 
@@ -761,6 +756,12 @@ async function kiddyFunky() {
         }
     }
 
+    if(!validateData()) {
+        document.getElementById("msg").innerHTML = "Please fix the data before submitting";
+        return;
+    }
+    
+
     const packetBody = JSON.stringify({
         "semesters": semestersToUpdate,
         "events": eventsToUpdate
@@ -808,12 +809,20 @@ function validateName() {
     return true;
 }
 
-function validateAllNames(dto) {
-    if(dto.semesters == undefined) {
-        return true;
+function validateData() {
+    document.getElementById("msg").innerHTML = "";
+    var data = document.getElementsByClassName("hint");
+    for(let i = 0; i < data.length; i++) {
+        if(data[i].innerHTML === "") {} else {return false;}
     }
-    for(let i = 0; i < dto.semesters.length; i++) {
-        if(!validateNameInd(dto.semesters[i])) {
+    return true;
+}
+
+function validateAllNames(dto) {
+    console.log(dto.semesters);
+    for(let i = 0; i < dto.length; i++) {
+        console.log(dto.name);
+        if(!validateNameInd(dto[i].name)) {
             return false;
         }
     }
@@ -854,13 +863,13 @@ function validateYearInd(year) {
 }
 
 function validateAllYears(dto) {
-
-    if(dto.semesters == undefined) {
+    console.log(dto);
+    if(dto == undefined) {
         return true;
     }
 
-    for(let i = 0; i < dto.semesters.length; i++) {
-        if(!validateYear(dto.semesters[i].heldIn)) {
+    for(let i = 0; i < dto.length; i++) {
+        if(!validateYearInd(dto[i].heldIn)) {
             return false;
         }
     }

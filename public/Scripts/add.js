@@ -463,7 +463,7 @@ function validateAllYears(dto) {
     }
 
     for(let i = 0; i < dto.semesters.length; i++) {
-        if(!validateYear(dto.semesters[i].heldIn)) {
+        if(!validateYearInd(dto.semesters[i].heldIn)) {
             return false;
         }
     }
