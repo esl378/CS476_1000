@@ -155,7 +155,8 @@ function hideDates() {
 //Adds a new semester object to the form
 //name="",heldIn="",strtDate="",endDate="",year="", id=""
 function createSemesterObject(description, strtDate, endDate, year, heldIn, id) {
-
+    strtDate = getDate(strtDate);
+    endDate = getDate(endDate);
     //Get the semesters div
     var semesters = document.getElementById("semesters");
     var num = semesters.childNodes.length + 1;
@@ -256,7 +257,8 @@ function createSemesterObject(description, strtDate, endDate, year, heldIn, id) 
 
 //Adds a new date object
 function createDateObject(description, strtDate, endDate, year, semester, id) {
-
+    strtDate = getDate(strtDate);
+    endDate = getDate(endDate);
 //Get the form to add a new object
     var dates = document.getElementById("dates");
     var num = dates.childNodes.length + 1;

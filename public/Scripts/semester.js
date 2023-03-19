@@ -365,16 +365,6 @@ function destroyEvents() {
     }
 }
 
-function getDate(full) {
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var dt = new Date(full);
-    dt.setDate(dt.getDate() + 1);
-    var year = dt.getFullYear();
-    var month = months[dt.getMonth()];
-    var day = dt.getDate();
-    return month + " " + day + ", " + year;
-}
-
 function getStat(statName, event, dayType){
     var stat = document.getElementById(dayType);
     var div = document.createElement("div");
