@@ -1,4 +1,7 @@
-const Event = require('../models/Event');
+/* This file is not in use */
+
+
+/* const Event = require('../models/Event');
 const Semester = require('../models/Semester');
 const Year = require('../models/Year');
 
@@ -24,4 +27,4 @@ const handleGetSem = async (req, res) => {
     }
 }
 
-module.exports = {handleGetSem};
+module.exports = {handleGetSem}; */

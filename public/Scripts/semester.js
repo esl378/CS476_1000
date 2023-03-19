@@ -127,19 +127,20 @@ function destroySemesters() {
     var option = document.createElement("option");
     option.innerHTML = "Select a Semester";
     sem.appendChild(option);
+    destroyEvents();
 }
 
 async function displayEvents(year, semester){
     const events = [];
-    //events.length = 0;
     
-    destroyEvents(events);    
+    destroyEvents();    
     var termSelect = document.getElementById("termName");
     const firstLetter = semester.charAt(0).toUpperCase();
     const end = semester.indexOf('_');
     const remaining = semester.substring(1,end);
     const headYear = semester.substring(end + 1);
     termSelect.innerHTML = firstLetter + remaining + ' ' + headYear;
+    document.getElementById("eventally").classList.remove("hidable");
 
     try{
         const res = await fetch('http://localhost:4111/semp', {
@@ -148,8 +149,7 @@ async function displayEvents(year, semester){
             credentials: 'include',
         });
         const response = await res.json();
-        //console.log(year);
-        //console.log(semester);
+        console.log(response);
 
         // Populate the dropdown menu
         if(year == "Select Academic Year"){
@@ -160,22 +160,90 @@ async function displayEvents(year, semester){
                 if(year === response.evtResult[i].year && semester === response.evtResult[i].semester){
                     events[events.length] = response.evtResult[i];
                 }
-                    /* var option = document.createElement("option");
-                    option.value = response.semResult[i].name;
-                    option.name = "semester";
-                    const firstLetter = response.semResult[i].name.charAt(0).toUpperCase();
-                    const end = response.semResult[i].name.indexOf('_');
-                    const remaining = response.semResult[i].name.substring(1,end);
-                    option.innerHTML = firstLetter + remaining;
-                    semSelect.appendChild(option); */
             }
-            let regTerm = /term/i;
             console.log(events);
             for(let i = 0; i < events.length; i++){
-                let location = events[i].description.match(regTerm);
-            }
-            
+                if(events[i].description === "Class Dates"){
+                    document.getElementById("strtClass").innerHTML = events[i].strtDate;
+                    document.getElementById("endClass").innerHTML = events[i].endDate;
+                }
+                if(events[i].description === "Examination Dates"){
+                    document.getElementById("examStrt").innerHTML = events[i].strtDate;
+                    document.getElementById("examEnd").innerHTML = events[i].endDate;
+                }
+                if(events[i].description === "Due Date for Tuition and Fee Payment"){
+                    document.getElementById("dueDate").innerHTML = events[i].strtDate;
+                }
+                if(events[i].description === "End of penalty-free payment period"){
+                    document.getElementById("pfpmt").innerHTML = events[i].strtDate;
+                }
+                if(events[i].description === "End of Course Add Period"){
+                    document.getElementById("addEnd").innerHTML = events[i].strtDate;
+                }
+                if(events[i].description === "End of No-Record Drop Period"){
+                    document.getElementById("nrDrop").innerHTML = events[i].strtDate;
+                }
+                if(events[i].description === "End of Grade-of-W Period"){
+                    document.getElementById("gwDrop").innerHTML = events[i].strtDate;
+                }
+                if(events[i].description === "End of 100% Refund Period"){
+                    document.getElementById("fullRef").innerHTML = events[i].strtDate;
+                }
+                if(events[i].description === "End of 50% Refund Period"){
+                    document.getElementById("halfRef").innerHTML = events[i].strtDate;
+                }
+                if(events[i].description === "Reading Week"){
+                    document.getElementById("readStrt").innerHTML = events[i].strtDate;
+                    document.getElementById("readEnd").innerHTML = events[i].endDate;
+                }
 
+
+                if(events[i].description === "Good Friday"){
+                    var stat = document.getElementById("statHoli");
+                    var div = document.createElement("div");
+                    div.id = "gf";
+                    var span = document.createElement("span");
+                    span.className = "bold";
+                    span.innerHTML = "Good Friday";
+                    var p = document.createElement("p");
+                    p.innerHTML = events[i].strtDate;
+                    //var br = document.createElement("br/");
+                    div.appendChild(span);
+                    div.appendChild(p);
+                    //div.appendChild(br);
+                    stat.appendChild(div);
+                }
+                if(events[i].description === "Remembrance Day"){
+                    var stat = document.getElementById("statHoli");
+                    var div = document.createElement("div");
+                    div.id = "gf";
+                    var span = document.createElement("span");
+                    span.className = "bold";
+                    span.innerHTML = "Remembrance Day";
+                    var p = document.createElement("p");
+                    p.innerHTML = events[i].strtDate;
+                    var br = document.createElement("br");
+                    div.appendChild(span);
+                    div.appendChild(p);
+                    div.appendChild(br);
+                    stat.appendChild(div);
+                }
+                if(events[i].description === "Student Orientation"){
+                    var holidays = document.getElementById("otherHoli");
+                    var div = document.createElement("div");
+                    div.id = "gf";
+                    var span = document.createElement("span");
+                    span.className = "bold";
+                    span.innerHTML = "Student Orientation:";
+                    var p = document.createElement("p");
+                    p.innerHTML = events[i].strtDate;
+                    var br = document.createElement("br");
+                    div.appendChild(span);
+                    div.appendChild(p);
+                    div.appendChild(br);
+                    holidays.appendChild(div);
+                }
+            }
         }
 
         if(!res.ok){
@@ -191,20 +259,19 @@ async function displayEvents(year, semester){
 }
 
 function destroyEvents() {
-    var termSelect = document.getElementById("termName").innerHTML = "";/* 
-    let even = document.getElementById("dates");
-    console.log(even);
-    while(even.lastElementChild) {
-        even.removeChild(even.lastElementChild);
+    //termSelect.innerHTML = "";
+    /* var p = document.getElementsByTagName("p");
+    for(let i=0; i < p.length;i++){
+        p[i].innerHTML = "";
     } */
+    var holidays = document.getElementById("otherHoli");
+    while(holidays.children.length > 0){
+        holidays.removeChild(holidays.lastChild);
+    }
+    var stats = document.getElementById("statHoli");
+    while(stats.children.length > 0){
+        stats.removeChild(stats.lastChild);
+    }
 }
-
-/* function newSem(description, strtDate, endDate, year, heldIn){
-
-    //  Get the semester
-    var sems = document.getElementById("semVals");
-    var semQuan = sems.childNodes.length + 1;
-
-} */
 
 window.onload = semPopulate;

@@ -41,7 +41,7 @@
             <form action="./monthView.html" class="midRight">
                 <input type="submit" value="Month View" class="">
             </form>
-            <div class="info" role="main">
+            <div class="info hidable" role="main" id="eventally">
                 <h1 role="heading" id="termName"></h1>
                 <details class="infoAccordian" id="termInfo" role="directory">
                     <summary role="doc-subtitle">Term Information</summary>
@@ -53,37 +53,48 @@
                         <details class="step2">
                             <summary>Class Dates</summary>
                             <div class="step1">
-                                <span class="bold">Start of Classes:</span> 4-January-2023<br/>
-                                <span class="bold">End of Classes:</span> 11-April-2023
+                                <span class="bold">Start of Classes:</span> 
+                                <p id="strtClass">4-January-2023</p><br/>
+                                <span class="bold">End of Classes:</span> 
+                                <p id="endClass"></p>
                             </div>
                         </details>
                         <details class="step2">
                             <summary>Examination Dates</summary>
                             <div class="step1">
-                                <span class="bold">First Day of Exams:</span> 14-April-2023<br/>
-                                <span class="bold">Last Day of Exams:</span> 27-April-2023
+                                <span class="bold">First Day of Exams:</span> 
+                                <p id="examStrt">14-April-2023<br/></p>
+                                <span class="bold">Last Day of Exams:</span> 
+                                <p id="examEnd">27-April-2023</p>
                             </div>
                         </details>
                         <details class="step2">
                             <summary>Tuition and Fee Payment Dates</summary>
                             <div class="step1">
-                                <span class="bold">Due date:</span> 4-January-2023<br/>
-                                <span class="bold">End of Penalty-Free Payment Period:</span> 31-January-2023
+                                <span class="bold">Due date:</span> 
+                                <p id="dueDate"> 4-January-2023<br/></p>
+                                <span class="bold">End of Penalty-Free Payment Period:</span> 
+                                <p id="pfpmt"> 31-January-2023</p>
                             </div>
                         </details>
                         <details class="step2">
                             <summary>Class Add/Drop Dates</summary>
                             <div class="step1">
-                                <span class="bold">End of Course-Add Period:</span> 17-January-2023<br/>
-                                <span class="bold">End of No-Record Drop Period:</span> 17-January-2023<br/>
-                                <span class="bold">End of Grade-of-W Drop Period:</span> 15-March-2023
+                                <span class="bold">End of Course-Add Period:</span> 
+                                <p id="addEnd"></p> <br/>
+                                <span class="bold">End of No-Record Drop Period:</span> 
+                                <p id="nrDrop"></p> <br/>
+                                <span class="bold">End of Grade-of-W Drop Period:</span> 
+                                <p id="gwDrop"></p>
                             </div>
                         </details>
                         <details class="step2">
                             <summary>Tuition and Fee Refund Dates</summary>
                             <div class="step1">
-                                <span class="bold">End of 100% Refund Period:</span> 17-January-2023<br/>
-                                <span class="bold">End of 50% Refund Period:</span> 31-January-2023
+                                <span class="bold">End of 100% Refund Period:</span> 
+                                <p id="fullRef"></p> <br/>
+                                <span class="bold">End of 50% Refund Period:</span> 
+                                <p id="halfRef"></p>
                             </div>
                         </details>
                     </div>
@@ -95,24 +106,22 @@
                         <details class="step2">
                             <summary>Reading Week</summary>
                             <div class="step1">
-                                <span class="bold">Start (Monday):</span> 20-February-2023<br/>
-                                <span class="bold">End (Saturday):</span> 25-February-2023
+                                <span class="bold">Start (Monday):</span> 
+                                <p id="readStrt"></p><br/>
+                                <span class="bold">End (Saturday):</span> 
+                                <p id="readEnd"></p>
                             </div>
                         </details>
                         <details class="step2">
-                            <summary>Stat Holidays - No Classes <span class="seventyfive">(Most University Offices Closed)</span>;</summary>
-                            <div class="step1">
-                                <span class="bold">Good Friday:</span> 7-April-2023<br/>
-                                <span class="bold">Family Day:</span> 20-February-2023<br/>
-                                <!-- <span class="bold">Thanksgiving Day:</span> 10-October-2022<br/>
-                                <span class="bold">Remembrance Day:</span> 11-November-2022 -->
+                            <summary>Stat Holidays - No Classes <span class="seventyfive">(Most University Offices Closed)</span></summary>
+                            <div class="step1" id="statHoli">
                             </div>
                         </details>
                         <details class="step2">
                             <summary>Other</summary>
-                            <div class="step1">
+                            <div class="step1" id="otherHoli">
                                 <span class="bold">Student Orientation:</span> 3-January-2023<br/>
-                                <span class="bold">Last day to apply to graduate for Spring 2023 Convocation:</span> 31-January-2023<br/>
+                                <span class="bold">Last day to apply to graduate for Spring 2023 Convocation:</span> <br/>
                                 <!-- <span class="bold">University Closed From <span class="seventyfive">(noon)</span>:</span> 22-December-2022<br/>
                                 <span class="bold">University Closed To <span class="seventyfive">(8:15 a.m.)</span>:</span> 3-January-2023 -->
                             </div>

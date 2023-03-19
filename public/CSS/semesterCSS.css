@@ -60,6 +60,9 @@ summary:hover{
     margin-bottom: 1%;
     font-size: 90%;
 }
+.step1 p{
+    margin: 0;
+}
 .step2{
     margin-bottom: 7.5px;
 }
@@ -77,4 +80,8 @@ h1{
 }
 .seventyfive{
     font-size: 75%;
+}
+
+.hidable{
+    display: none;
 }

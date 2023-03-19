@@ -110,5 +110,20 @@ const handlePutYear = async(req, res) => {
     }
 }
 
+const handleGetSem = async (req, res) => {
+    const infoReceiver = req.body;
+    const semList = infoReceiver.semesters;
+    const yrList = infoReceiver.years;
+    const evtList = infoReceiver.events;
 
-module.exports = {handleAddYear, handleGetEvents, handleGetYears, handleGetSemesters, handlePutYear};
+    try{
+        const semResult = await Semester.find(semList).sort({"name": 1}).exec();
+        const yrResult = await Year.find(yrList).sort({"year": 1}).exec();
+        const evtResult = await Event.find(evtList).exec();
+        res.status(201).json({semResult, yrResult, evtResult});
+    }catch(err){
+        res.status(500).json({'message': err.message});
+    }
+}
+
+module.exports = {handleAddYear, handleGetEvents, handleGetYears, handleGetSemesters, handlePutYear, handleGetSem};
