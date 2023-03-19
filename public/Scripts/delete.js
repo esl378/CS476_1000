@@ -1,24 +1,26 @@
-
+//used to get form data to send to the server side
 const form = document.getElementById("del")
 form.addEventListener("submit", function(Event) {
     Event.preventDefault();
     main(form);
 })
 
+
+//Sends the selected calendar year to the server side that is to be removed from the database
 async function main(form) {
-    
     const formData = new FormData(form);
     const val = formData.get('Year');
     const send = {"year": val};
-    console.log(val);
     
     try{
+        //Send message to server with data to be deleted
         const res = await fetch('http://localhost:4111/del', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
             body: JSON.stringify(send)
         });
+        //retrieve the number of items deleted from the database 
         const response = await res.json();
         var num = response.deleted;
         if(!res.ok){
@@ -28,6 +30,7 @@ async function main(form) {
             throw new Error(`${res.status} ${res.statusText}`);
         }
 
+        //if anything was deleted move user to the confirmation page sending the number of items deleted in the URL
         if(num > 0){
             window.location = 'confirm.html?type=0&number=' + num;
         }
@@ -38,7 +41,9 @@ async function main(form) {
 }
 
 async function populate() {
+
     try{
+        //retrieve all calendar years from the database that can be deleted
         const res = await fetch('http://localhost:4111/delp', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
@@ -47,6 +52,7 @@ async function populate() {
         const response = await res.json();
         var select = document.getElementById("yearVals");
 
+        //place the retrieved data into a selection form option
         for(let i = 0; i < response.length; i++){
             var option = document.createElement("option");
             option.value = response[i].year;

@@ -26,7 +26,7 @@ const handleLogin = async (req, res) => {
         // Saving refresh token with the current user
         foundUser.refreshToken = refreshToken;
         const result = await foundUser.save();
-        console.log(result);
+        
 
         res.cookie('jwt', refreshToken, { maxAge: 60 * 60 * 1000, httpOnly: true }); //MUST ADD BEFORE DEPLOYMENT: secure: true , { httpOnly: true, maxAge: 24 * 60 * 60 * 1000}
         res.cookie('jwt_access', accessToken, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true });

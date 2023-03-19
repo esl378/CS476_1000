@@ -1,12 +1,10 @@
 const User = require('../models/User');
 
 const handleLogout = async (req, res) => {
-    //On client, also delete the accessToken
 
-    
-
+    //retreive the cookie header from the request message
     const cookies = req.cookies;
-    if(!cookies?.jwt) return res.redirect('/') //No content to send back
+    if(!cookies?.jwt) return res.redirect('/') //not logged in, do nothing
     const refreshToken = cookies.jwt;
 
     // Is refresh token in db?
