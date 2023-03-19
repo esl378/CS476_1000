@@ -20,8 +20,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 //Handle options credentials check
-//also fetch cookies credentials requirement
-app.use(credentials);
+//app.use(credentials);
 
 //cross origin resource sharing
 app.use(cors(corsOptions));
