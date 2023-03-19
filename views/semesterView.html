@@ -5,6 +5,7 @@
         <title>Academic Schedule - Semester View</title>
         <link rel="stylesheet" type="text/css" href="/CSS/overall.css"/>
         <link rel="stylesheet" type="text/css" href="/CSS/semesterCSS.css"/>
+        <link rel="stylesheet" type="text/css" href="/CSS/monthCSS.css"/>
         <meta http-equiv="refresh" content="3600">
     </head>
     <header class="banner" role="banner">
@@ -39,62 +40,54 @@
                     </select>
                 </form>
             </div>
-            <form action="./monthView.html" class="midRight">
-                <input type="submit" value="Month View" class="">
+            <form id="mthBtn" action="" class="midRight event"><!-- action="./monthView.html" -->
+                <input type="submit" value="Month View">
+                <span class="eventText" id="eventPopup">
+                    Feature Coming Soon!
+                </span>
             </form>
             <div class="info hidable" role="main" id="eventally">
                 <h1 role="heading" id="termName"></h1>
                 <details class="infoAccordian" id="termInfo" role="directory">
                     <summary role="doc-subtitle">Term Information</summary>
                     <div class="step1">
-                        <span class="bold">Held in:</span> January - April<br/>
-                        <span class="bold">Start of Term:</span> 4-January-2023<br/>
-                        <span class="bold">End of Term:</span> 27-April-2023
+                        <p id="heldin"></p>
+                        <p id="termStart"></p>
+                        <p id="termEnd"></p>
                         <p style="margin: 5px"> </p>
                         <details class="step2">
                             <summary>Class Dates</summary>
                             <div class="step1">
-                                <span class="bold">Start of Classes:</span> 
-                                <p id="strtClass">4-January-2023</p><br/>
-                                <span class="bold">End of Classes:</span> 
+                                <p id="strtClass"></p>
                                 <p id="endClass"></p>
                             </div>
                         </details>
                         <details class="step2">
                             <summary>Examination Dates</summary>
                             <div class="step1">
-                                <span class="bold">First Day of Exams:</span> 
-                                <p id="examStrt">14-April-2023<br/></p>
-                                <span class="bold">Last Day of Exams:</span> 
-                                <p id="examEnd">27-April-2023</p>
+                                <p id="examStrt"></p> 
+                                <p id="examEnd"></p>
                             </div>
                         </details>
                         <details class="step2">
                             <summary>Tuition and Fee Payment Dates</summary>
-                            <div class="step1">
-                                <span class="bold">Due date:</span> 
-                                <p id="dueDate"> 4-January-2023<br/></p>
-                                <span class="bold">End of Penalty-Free Payment Period:</span> 
-                                <p id="pfpmt"> 31-January-2023</p>
+                            <div class="step1"> 
+                                <p id="dueDate"></p>
+                                <p id="pfpmt"></p>
                             </div>
                         </details>
                         <details class="step2">
                             <summary>Class Add/Drop Dates</summary>
-                            <div class="step1">
-                                <span class="bold">End of Course-Add Period:</span> 
-                                <p id="addEnd"></p> <br/>
-                                <span class="bold">End of No-Record Drop Period:</span> 
-                                <p id="nrDrop"></p> <br/>
-                                <span class="bold">End of Grade-of-W Drop Period:</span> 
+                            <div class="step1"> 
+                                <p id="addEnd"></p>
+                                <p id="nrDrop"></p>
                                 <p id="gwDrop"></p>
                             </div>
                         </details>
                         <details class="step2">
                             <summary>Tuition and Fee Refund Dates</summary>
                             <div class="step1">
-                                <span class="bold">End of 100% Refund Period:</span> 
-                                <p id="fullRef"></p> <br/>
-                                <span class="bold">End of 50% Refund Period:</span> 
+                                <p id="fullRef"></p>
                                 <p id="halfRef"></p>
                             </div>
                         </details>
@@ -107,9 +100,7 @@
                         <details class="step2">
                             <summary>Reading Week</summary>
                             <div class="step1">
-                                <span class="bold">Start (Monday):</span> 
-                                <p id="readStrt"></p><br/>
-                                <span class="bold">End (Saturday):</span> 
+                                <p id="readStrt"></p>
                                 <p id="readEnd"></p>
                             </div>
                         </details>
@@ -121,10 +112,7 @@
                         <details class="step2">
                             <summary>Other</summary>
                             <div class="step1" id="otherHoli">
-                                <span class="bold">Student Orientation:</span> 3-January-2023<br/>
-                                <span class="bold">Last day to apply to graduate for Spring 2023 Convocation:</span> <br/>
-                                <!-- <span class="bold">University Closed From <span class="seventyfive">(noon)</span>:</span> 22-December-2022<br/>
-                                <span class="bold">University Closed To <span class="seventyfive">(8:15 a.m.)</span>:</span> 3-January-2023 -->
+                                <p id="other"></p>
                             </div>
                         </details>
                     </div>
@@ -132,6 +120,7 @@
             </div>
         </div>
         <footer class="bottom">
+            <a href="https://banner.uregina.ca" class="bottomLeft">UR Self-Service</a>
             <a href="./login.html" class="bottomRight">Admin Login</a>
         </footer>
     </body>
