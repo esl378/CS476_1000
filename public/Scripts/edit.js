@@ -830,7 +830,7 @@ function validateAllNames(dto) {
 }
 
 function validateNameInd(name) {
-    const pattern = /^[a-zA-Z]+[_]\d{4}$/;
+    const pattern = /^[a-zA-Z]+[/]*[a-zA-Z]+[_]\d{4}$/;
     if(!pattern.test(name)) {
         return false;
     } 
