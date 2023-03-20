@@ -1,3 +1,5 @@
 {
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/136058c8-e549-40d1-a1fa-761a4b6b02fa/resourceGroups/jdfsdjfkj/providers/Microsoft.Web/sites/jfdkflkfdk",
+    "appService.deploySubpath": "."
 }
