@@ -55,6 +55,6 @@ function display(){
 
 function goodbye(){
    
-    location.href = 'http://localhost:4111/maintenance';
+    location.href = 'http://jfdklfjdf.azurewebsites.net/maintenance';
 }
 window.onload = display;
