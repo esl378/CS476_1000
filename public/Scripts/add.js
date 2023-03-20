@@ -169,7 +169,7 @@ function createSemesterObject() {
     //End date
     //Title
     var name = document.createElement("p");
-    name.innerHTML = "Start date";
+    name.innerHTML = "End date";
     //Input
     var input = document.createElement("input");
     input.type = "date";
