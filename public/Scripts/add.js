@@ -364,7 +364,7 @@ function createDTO() {
 async function daddyFunky() {
     const dto = createDTO();
 
-    if(validateAllNames(dto) && validateAllYears(dto)) {
+    if(validateData()) {
         document.getElementById("msg").innerHTML = "Please fix the data before submitting";
         return;
     }
@@ -390,6 +390,15 @@ async function daddyFunky() {
     } catch(err) {
         console.log("Big error");
     }
+}
+
+function validateData() {
+    document.getElementById("msg").innerHTML = "";
+    var data = document.getElementsByClassName("hint");
+    for(let i = 0; i < data.length; i++) {
+        if(data[i].innerHTML === "") {} else {return false;}
+    }
+    return true;
 }
 
 function validateName() {
