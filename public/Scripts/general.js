@@ -24,7 +24,7 @@ function getDate(full) {
 async function sendRefreshToken(){
 
     try{
-        const res = await fetch('http://localhost:4111/del',{
+        const res = await fetch('http://jfdklfjdf.azurewebsites.net/del',{
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include'
