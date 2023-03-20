@@ -15,7 +15,7 @@ async function main(yearForm, semForm) {
     console.log(semVal);
 
     try{
-        const res = await fetch('http://localhost:4111/sRoute', {
+        const res = await fetch('http://jfdklfjdf.azurewebsites.net/sRoute', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
@@ -50,7 +50,7 @@ function getChosenSem(){
 
 async function displayYr() {
     try{
-        const res = await fetch('http://localhost:4111/semp', {
+        const res = await fetch('http://jfdklfjdf.azurewebsites.net/semp', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
@@ -81,7 +81,7 @@ async function displayYr() {
 async function displaySem(year){
     destroySemesters();
     try{
-        const res = await fetch('http://localhost:4111/semp', {
+        const res = await fetch('http://jfdklfjdf.azurewebsites.net/semp', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
@@ -145,7 +145,7 @@ async function displayEvents(year, semester){
     document.getElementById("eventally").classList.remove("hidable");
 
     try{
-        const res = await fetch('http://localhost:4111/semp', {
+        const res = await fetch('http://jfdklfjdf.azurewebsites.net/semp', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
