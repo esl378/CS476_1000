@@ -369,7 +369,7 @@ async function daddyFunky() {
         return;
     }
     try{
-        const result = await fetch('http://localhost:4111/add', {
+        const result = await fetch('http://jfdklfjdf.azurewebsites.net/add', {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
