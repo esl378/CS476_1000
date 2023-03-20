@@ -14,7 +14,7 @@ async function main(form) {
     
     try{
         //Send message to server with data to be deleted
-        const res = await fetch('http://localhost:4111/del', {
+        const res = await fetch('http://jfdklfjdf.azurewebsites.net/del', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
@@ -44,7 +44,7 @@ async function populate() {
 
     try{
         //retrieve all calendar years from the database that can be deleted
-        const res = await fetch('http://localhost:4111/delp', {
+        const res = await fetch('http://jfdklfjdf.azurewebsites.net/delp', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
