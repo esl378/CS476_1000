@@ -4,3 +4,4 @@ document.getElementById("addSemester").addEventListener("click", createSemesterO
 document.getElementById("hideSemesters").addEventListener("click", hideSemesters);
 document.getElementById("hideDate").addEventListener("click", hideDates);
 document.getElementById("form").addEventListener("submit", function (event){event.preventDefault(); daddyFunky()});
+document.getElementById("year").addEventListener("blur", validateYear);

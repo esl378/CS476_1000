@@ -191,7 +191,6 @@ function createSemesterObject() {
     input.className = "heldIn";
     input.name = "heldIn";
     input.id = "heldIn";
-    input.addEventListener("blur", validateYear);
     //Add input to p
     name.appendChild(input);
     //Add name to div
@@ -332,7 +331,6 @@ function getAllSemesters(yr) {
 
 function getAllYears() {
     let yrs = document.getElementById("year");
-
     let yers = new Year;
 
     yers.year = yrs.value;
