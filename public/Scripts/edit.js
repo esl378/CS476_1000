@@ -793,7 +793,7 @@ async function kiddyFunky() {
 }
 
 function validateName() {
-    const pattern = /^[a-zA-Z]+[_]\d{4}$/;
+    const pattern = /^[a-zA-Z]+[/]*[a-zA-Z]+[_]\d{4}$/;
     //If it doesn't match the pattern, it adds a hint to match the pattern
     //If it does then delete the hint
     if(this.parentNode.childNodes.length > 2) {
@@ -830,7 +830,7 @@ function validateAllNames(dto) {
 }
 
 function validateNameInd(name) {
-    const pattern = /^[a-zA-Z]+[_]\d{4}$/;
+    const pattern = /^[a-zA-Z]+[/]*[a-zA-Z]+[_]\d{4}$/;
     if(!pattern.test(name)) {
         return false;
     } 
