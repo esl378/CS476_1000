@@ -169,7 +169,7 @@ function createSemesterObject() {
     //End date
     //Title
     var name = document.createElement("p");
-    name.innerHTML = "Start date";
+    name.innerHTML = "End date";
     //Input
     var input = document.createElement("input");
     input.type = "date";
@@ -191,7 +191,6 @@ function createSemesterObject() {
     input.className = "heldIn";
     input.name = "heldIn";
     input.id = "heldIn";
-    input.addEventListener("blur", validateYear);
     //Add input to p
     name.appendChild(input);
     //Add name to div
@@ -332,7 +331,6 @@ function getAllSemesters(yr) {
 
 function getAllYears() {
     let yrs = document.getElementById("year");
-
     let yers = new Year;
 
     yers.year = yrs.value;
@@ -366,7 +364,7 @@ function createDTO() {
 async function daddyFunky() {
     const dto = createDTO();
 
-    if(validateAllNames(dto) && validateAllYears(dto)) {
+    if(validateData()) {
         document.getElementById("msg").innerHTML = "Please fix the data before submitting";
         return;
     }
@@ -392,6 +390,15 @@ async function daddyFunky() {
     } catch(err) {
         console.log("Big error");
     }
+}
+
+function validateData() {
+    document.getElementById("msg").innerHTML = "";
+    var data = document.getElementsByClassName("hint");
+    for(let i = 0; i < data.length; i++) {
+        if(data[i].innerHTML === "") {} else {return false;}
+    }
+    return true;
 }
 
 function validateName() {

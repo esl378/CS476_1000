@@ -43,7 +43,7 @@ const handleGetEvents = async (req, res) => {
 const handleGetYears = async (req, res) => {
     const { year } = req.body;
     
-    const event = await Year.find().exec();
+    const event = await Year.find().sort({"year": 1}).exec();
     
     try{
         res.json(event);
@@ -56,7 +56,7 @@ const handleGetYears = async (req, res) => {
 const handleGetSemesters = async (req, res) => {
     const { name, strtDate, endDate, year, heldIn } = req.body;
     
-    const event = await Semester.find().exec();
+    const event = await Semester.find().sort({"name": 1}).exec();
     
     try{
         res.json(event);
