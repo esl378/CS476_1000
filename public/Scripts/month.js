@@ -2,7 +2,7 @@ async function main(val) {
     const year = val;
 
     try{
-        const res = await fetch('http://localhost:4111/mRoute', {
+        const res = await fetch('http://jfdklfjdf.azurewebsites.net/mRoute', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json'},
             credentials: 'include',
