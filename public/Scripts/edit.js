@@ -383,7 +383,7 @@ async function mommyFunky() {
     let jsonEvents;
     //-------------------------------Getting semester data--------------------------------------------------------------------------------
         try{
-        const result = await fetch('http://localhost:4111/getSemesters', {
+        const result = await fetch('http://jfdklfjdf.azurewebsites.net/getSemesters', {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -406,7 +406,7 @@ async function mommyFunky() {
     
     //------------------------Getting Event data----------------------------------------------------------------------------------------------
     try{
-        const result = await fetch('http://localhost:4111/getEvents', {
+        const result = await fetch('http://jfdklfjdf.azurewebsites.net/getEvents', {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -429,7 +429,7 @@ async function mommyFunky() {
 
     //----------------------Getting the Year data-------------------------------------------------------------------------------------------------
     try{
-        const result = await fetch('http://localhost:4111/getYears', {
+        const result = await fetch('http://jfdklfjdf.azurewebsites.net/getYears', {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -768,7 +768,7 @@ async function kiddyFunky() {
     });
 
     try{
-        const result = await fetch('http://localhost:4111/putYear', {
+        const result = await fetch('http://jfdklfjdf.azurewebsites.net/putYear', {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
