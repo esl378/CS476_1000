@@ -8,6 +8,4 @@ The webpage project we will create will be a new user interface that will make t
 
 In addition to the above, we will be adding some additional functionality. The default view for users will be the information for the current semester based on the current date, with the option to select a different academic year and look at the other semesters. Another functionality will be the ability to switch the view from a semester at a glance to a monthly view containing all the relevant information occurring in a given month, which will also default to the current month based on the current date.
 
-[<img src="https://cdn.gomix.com/2bdfb3f8-05ef-4035-a06e-2043962a3a13%2Fremix-button.svg" width="163px" />](https://glitch.com/edit/#!/import/github/Jkress78/CS476_1000)
 
-**Deploy by Clicking ^**
