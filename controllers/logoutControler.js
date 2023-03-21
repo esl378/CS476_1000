@@ -19,8 +19,8 @@ const handleLogout = async (req, res) => {
     const result = await foundUser.save();
     console.log(result);
     
-    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None'});
-    res.clearCookie('jwt_access', { httpOnly: true, sameSite: 'None'});
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure:true});
+    res.clearCookie('jwt_access', { httpOnly: true, sameSite: 'None', secure:true});
     res.redirect('/');
     
 }
