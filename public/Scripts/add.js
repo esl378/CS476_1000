@@ -364,7 +364,7 @@ function createDTO() {
 async function daddyFunky() {
     const dto = createDTO();
 
-    if(validateData()) {
+    if(!validateData()) {
         document.getElementById("msg").innerHTML = "Please fix the data before submitting";
         return;
     }
